@@ -11,8 +11,8 @@ var handlebars = require('express-handlebars');
 // and documentation.
 
 keystone.init({
-	'name': 'Juvel Skincare',
-	'brand': 'Juvel Skincare',
+	'name': 'JUVEL Skincare',
+	'brand': 'JUVEL Skincare',
 
 	'less': 'public',
 	'static': 'public',
@@ -80,10 +80,12 @@ keystone.Email.defaults.templateEngine = require('handlebars');
 
 // Configure the navigation bar in Keystone's Admin UI
 keystone.set('nav', {
-	posts: ['posts', 'post-categories'],
-	galleries: 'galleries',
+	landing: 'carousels',
+	blog: ['posts', 'post-categories'],
+	// galleries: 'galleries',
 	enquiries: 'enquiries',
-	users: 'users',
+	product: ['products', 'product-collections', 'product-reviews', 'product-promotions'],
+	users: ['users', 'mailing-lists']
 });
 
 // Start Keystone to connect to your database and initialise the web server
