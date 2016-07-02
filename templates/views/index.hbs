@@ -1,0 +1,38 @@
+{{!< default}}
+	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+	  <!-- Indicators -->
+	  <ol class="carousel-indicators">
+	  	{{#each gallery.0.images}}
+	    <li data-target="#carousel-example-generic" data-slide-to="{{@index}}" class="{{#if @first}}active{{/if}}"></li>
+	    {{/each}}
+	  </ol>
+
+	  <!-- Wrapper for slides -->
+	  <div class="carousel-inner" role="listbox">
+	  	{{#each gallery.0.images}}
+	    <div class="item {{#if @first}}active{{/if}}" style="background-image:url({{secure_url}}); background-position: top center; background-repeat: no-repeat; height:500px">
+	      <div class="carousel-caption" style="margin-bottom: 150px">
+	        <h1>เสริมสร้างพุงอ้วนกลม</br><small>เริ่มต้นเพียง 599.-</small></h1><br/>
+	        <button class="btn btn-primary">อ่านต่อไป</button>
+	      </div>
+	    </div>
+	    {{/each}}
+	  </div>
+
+	</div>
+	<p></br></p>
+	<div class="container">
+		<div class="row">
+		<div class="col-md-3"></div>
+        <div class="col-md-3">
+          <h3 class="sukhumvit">อะไรคือ JUVEL</h3>
+          <p class="sukhumvit">เราคือแบรนด์ออนไลน์แฟชั่น พร้อมสไตล์สดใหม่และแตกต่างอย่างมีรสนิยม และอยากเห็นคนไทยอ้วนกลมเหมือนทิพย์</p>
+       </div>
+        <div class="col-md-3">
+          <h3 class="sukhumvit"></h3>
+          <p><input type="text" class="form-control" placeholder="Email Address" /></p>
+          <p><a class="btn btn-primary btn-sm" href="#" role="button">สมัครรับข่าวสาร »</a></p>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+	</div>
