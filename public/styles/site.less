@@ -19,6 +19,9 @@
 
 @import "site/variables.less";
 
+@brown-base: #d3c8c2;
+@brown-lighter: lighten(@brown-base, 83.5%); // #eee
+@brown-darker: darken(@brown-base, 50%);
 
 // Site Styles
 // ===========
@@ -39,8 +42,8 @@
 .juvel-header{
 	margin-top:0px; 
 	padding:20px; 
-	color: #5B0000;
-	#gradient > .directional(@end-color: #D67889; @start-color: #EDDDDF; @deg:80deg);
+	color: @brown-darker;
+	#gradient > .directional(@end-color: @brown-base; @start-color: @brown-lighter; @deg:80deg);
 }
 
 .btn-attention{
@@ -53,3 +56,6 @@
 	color: white;
 }
 
+.align-right{
+	text-align: right;
+}
