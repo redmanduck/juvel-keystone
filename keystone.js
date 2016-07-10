@@ -85,7 +85,12 @@ keystone.set('nav', {
 	// galleries: 'galleries',
 	enquiries: 'enquiries',
 	product: ['products', 'product-collections', 'product-reviews', 'product-promotions'],
-	users: ['users', 'mailing-lists']
+	users: ['users', 'mailing-lists'],
+	dashboard: [{
+      label: "Dashboard",
+			key: "dashboard",
+      path: "/cadmium/dashboard"
+    }]
 });
 
 // Start Keystone to connect to your database and initialise the web server

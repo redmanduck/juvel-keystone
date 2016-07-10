@@ -13,9 +13,8 @@ Product.add({
 	state: { type: Types.Select, options: 'draft, published', default: 'draft', index: true },
 	mainImage: { type: Types.CloudinaryImage },
 	description: { type: Types.Html, wysiwyg: true, height: 150 },
-	collections: { type: Types.Relationship, ref: 'ProductCollection', many: true },
+	collections: { type: Types.Relationship, ref: 'ProductCollection', many: true }
 });
-
 
 Product.defaultColumns = 'title, state|20%, collections|20%';
 Product.register();
