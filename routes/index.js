@@ -40,8 +40,11 @@ exports = module.exports = function (app) {
 	app.get('/gallery', routes.views.gallery);
 	app.all('/contact', routes.views.contact);
 	app.all('/cart', routes.views.cart)
-	app.post('/checkout/step1', routes.views.checkoutInformation)
-	app.post('/checkout/step2', routes.views.checkoutShippingMethod)
+	app.all('/checkout/', routes.views.checkout)
+	app.post('/checkout/next', routes.views.checkoutNext)
+	app.get('/checkout/:name', routes.views.checkoutView)
+	app.get('/chlogin', routes.views.checkoutLogin)
+	app.post('/login', keystone.security.csrf.middleware.validate, routes.views.login)
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

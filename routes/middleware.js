@@ -22,7 +22,7 @@ exports.initLocals = function (req, res, next) {
 		{ label: 'หน้าแรก', key: 'home', href: '/' },
 		{ label: 'ผลิตภัณฑ์', key: 'products', href: '/products' },
 		{ label: 'Blog', key: 'blog', href: '/blog' },
-		{ label: 'เกียวกับเรา', key: 'contact', href: '/contact' },
+		{ label: 'เกียวกับเรา', key: 'contact', href: '/contact' }
 	];
 	res.locals.user = req.user;
 	next();

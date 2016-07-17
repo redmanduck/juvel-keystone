@@ -1,58 +1,52 @@
-<div class="container">
-
-	<ol class="breadcrumb sukhumvit">
-	  <li>ตะกร้า</li>
-	  <li class="active">กรอกข้อมูลผู้รับ</li>
-	  <li>เลือกวิธีจัดส่ง</li>
-	  <li>เลือกช่องทางการชำระเงิน</li>
-	</ol>
-
-	<div class="row">
-		<div class="col-md-5 col-sm-6">
-			<div class="form-group sukhumvit">
-			    <label for="name">ชื่อ นามกสุล</label>
-			    <input type="email" class="form-control" id="name" placeholder="Your Name">
+<form method="POST" action="/checkout/next">
+	<div class="container">
+		<input type="hidden" name="_next" value="shipping"/>
+		<ol class="breadcrumb sukhumvit">
+			<li>ตะกร้า</li>
+			<li class="active">ข้อมูลผู้รับ</li>
+			<li>วิธีจัดส่ง</li>
+			<li>ช่องทางการชำระเงิน</li>
+		</ol>
+		<div class="row">
+			<div class="col-md-5 col-sm-6">
+				<div class="form-group sukhumvit">
+					<label for="name">ชื่อ นามกสุล</label>
+					<input type="text" class="form-control" name="name" placeholder="Your Name">
+				</div>
+				<div class="form-group sukhumvit">
+					<label for="name">Email</label>
+					<input type="email" class="form-control" name="email" placeholder="" size="5"/>
+				</div>
+				<div class="form-group sukhumvit">
+					<label for="name">Mobile Phone</label>
+					<input type="text" class="form-control" name="phone" placeholder="" size="5"/>
+				</div>
+				<div class="form-group sukhumvit">
+					<label for="name">ที่อยู่</label>
+					<input type="text" class="form-control" name="address1" placeholder="บ้านเลขที่ หมู่บ้าน"/>
+					<input type="text" class="form-control" name="address2" placeholder="ซอย ถนน" style="margin-top:5px"/>
+					<input type="text" class="form-control" name="address3" placeholder="ตำบล / เขต " style="margin-top:5px"/>
+					<input type="text" class="form-control" name="province" value="กรุงเทพ / Bangkok" style="margin-top:5px"/>
+					<input type="text" class="form-control" name="zipcode" placeholder="รหัสไปรษณีย์" size="5" style="margin-top:5px"/>
+				</div>
 			</div>
-			<div class="form-group sukhumvit">
-			    <label for="name">Email</label>
-			    <input type="text" class="form-control" id="name" placeholder="" size="5"/>
+			<div class="col-md-4 col-sm-6 pull-right align-right">
+				<div class="input-group">
+					<input type="text" class="form-control" name="promo" placeholder="ใช้สิทธิ PROMO CODE"/>
+					<span class="input-group-btn">
+						<button class="btn btn-primary">Apply</button>
+					</span>
+				</div></br>
+				<hr/>
+				<h2><small class="sukhumvit">ทั้งหมด</small> <br/>1,200 <small>.-</small></h2>
+				<hr/>
 			</div>
-			<div class="form-group sukhumvit">
-			    <label for="name">Mobile Phone</label>
-			    <input type="text" class="form-control" id="name" placeholder="" size="5"/>
-			</div>
-			<div class="form-group sukhumvit">
-			    <label for="name">ที่อยู่</label>
-			    <input type="text" class="form-control" id="name" placeholder="บ้านเลขที่ หมู่บ้าน"/>
-			    <input type="text" class="form-control" id="name" placeholder="ซอย ถนน" style="margin-top:5px"/>
-			    <input type="text" class="form-control" id="name" placeholder="ตำบล / เขต " style="margin-top:5px"/>
-			    <input type="text" class="form-control" id="name" value="กรุงเทพ / Bangkok" style="margin-top:5px"/>
-			    <input type="text" class="form-control" id="name" placeholder="รหัสไปรษณีย์" size="5" style="margin-top:5px"/>
-			</div>
-
 		</div>
-		<div class="col-md-2 col-sm-0"></div>
-		<div class="col-md-4 col-sm-6 align-right">
-			<div class="input-group">
-				<input type="text" class="form-control" placeholder="ใช้สิทธิ PROMO CODE"/>
-				<span class="input-group-btn">
-				<button class="btn btn-primary">Apply</button>
-				</span>
-			</div></br>
-			<table class="table table-condensed">
-				<tr><td>Shitty Chinese Cream</td><td>2</td><td>1000 .-</td></tr>
-			</table>
-			<hr/>
-			<h2><small class="sukhumvit">ทั้งหมด</small> <br/>1,200 <small>.-</small></h2>
-			<hr/>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-8 col-sm-7 col-xs-0">
-		</div>
-		<div class="col-md-3 col-sm-4 col-xs-12 align-right">
-			<a href="#" class="btn btn-default sukhumvit">กลับไปแก้ไข</a>
-			<a href="#" class="btn btn-primary sukhumvit">ถัดไป</a>
+		<div class="row">
+			<div class="col-md-3 col-sm-4 col-xs-12 align-right pull-right">
+				<a href="/cart" class="btn btn-default sukhumvit">กลับไปแก้ไข</a>
+				<button type="submit" href="#" class="btn btn-primary sukhumvit">ถัดไป</button>
+			</div>
 		</div>
 	</div>
-</div>
+</form>

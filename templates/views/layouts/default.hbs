@@ -12,6 +12,7 @@
 			- only renders when user is logged in and admin--}}
 		{{{isAdminEditorCSS user}}}
 
+
 		{{!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
 		//- Safely remove this block if you are not targeting IE8 --}}
 		<!--[if lt IE 9]>
@@ -21,6 +22,7 @@
 
 	</head>
 	<body>
+
 		<div id="header">
 			<div class="container">
 				<div role="navigation" class="navbar navbar-simple">
@@ -44,10 +46,11 @@
 							</ul>
 							<ul class="nav navbar-nav navbar-right">
 								{{#if user}}
+								<li><a href="/me"><i class="fa fa-user"></i> บัญชีของฉัน</a></li>
 								<li><a href="/keystone/signout">Sign Out</a></li>
 								{{else}}
-								<li><a href="/keystone/signin">สมัครใหม่</a></li>
-								<li><a href="/keystone/signin">เข้าสู่ระบบ</a></li>
+								<li><a href="/signup">สมัคร</a></li>
+								<li><a href="/chlogin">เข้าสู่ระบบ</a></li>
 								{{/if}}
 								<li><a href="/cart">
 									<i class="fa fa-shopping-bag" aria-hidden="true"></i>
