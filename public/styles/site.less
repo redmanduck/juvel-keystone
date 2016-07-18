@@ -45,6 +45,13 @@
 	#gradient > .directional(@end-color: @brown-base; @start-color: @brown-lighter; @deg:80deg);
 }
 
+.juvel-header-reverse{
+	 &:extend(.juvel-header);
+	 padding:10px;
+	 margin-bottom:1px;
+	 #gradient > .directional(@end-color: @brown-base; @start-color: @brown-lighter; @deg:-80deg);
+}
+
 .btn-attention{
 	border-color:#c94b5e;
 	color: white;

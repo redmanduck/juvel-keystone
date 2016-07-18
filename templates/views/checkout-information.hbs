@@ -11,11 +11,11 @@
 			<div class="col-md-5 col-sm-6">
 				<div class="form-group sukhumvit">
 					<label for="name">ชื่อ นามกสุล</label>
-					<input type="text" class="form-control" name="name" placeholder="Your Name">
+					<input type="text" class="form-control" name="name" value="{{ name.first }} {{ name.last }}" placeholder="Your Name">
 				</div>
 				<div class="form-group sukhumvit">
 					<label for="name">Email</label>
-					<input type="email" class="form-control" name="email" placeholder="" size="5"/>
+					<input type="email" class="form-control" name="email" readonly value="{{ email }}" placeholder="" size="5"/>
 				</div>
 				<div class="form-group sukhumvit">
 					<label for="name">Mobile Phone</label>
@@ -23,16 +23,16 @@
 				</div>
 				<div class="form-group sukhumvit">
 					<label for="name">ที่อยู่</label>
-					<input type="text" class="form-control" name="address1" placeholder="บ้านเลขที่ หมู่บ้าน"/>
-					<input type="text" class="form-control" name="address2" placeholder="ซอย ถนน" style="margin-top:5px"/>
-					<input type="text" class="form-control" name="address3" placeholder="ตำบล / เขต " style="margin-top:5px"/>
-					<input type="text" class="form-control" name="province" value="กรุงเทพ / Bangkok" style="margin-top:5px"/>
-					<input type="text" class="form-control" name="zipcode" placeholder="รหัสไปรษณีย์" size="5" style="margin-top:5px"/>
+					<input type="text" class="form-control" name="address[street1]" value="{{ address.street1 }}"  placeholder="บ้านเลขที่ หมู่บ้าน"/>
+					<input type="text" class="form-control" name="address[street2]" value="{{ address.street2 }}"   placeholder="ซอย ถนน" style="margin-top:5px"/>
+					<input type="text" class="form-control" name="address[suburb]" value="{{ address.suburb }}"   placeholder="ตำบล / เขต " style="margin-top:5px"/>
+					<input type="text" class="form-control" name="address[state]" value="{{ address.state }}"  value="กรุงเทพ / Bangkok" style="margin-top:5px"/>
+					<input type="text" class="form-control" name="address[postcode]"  value="{{ address.postcode }}"  placeholder="รหัสไปรษณีย์" size="5" style="margin-top:5px"/>
 				</div>
 			</div>
 			<div class="col-md-4 col-sm-6 pull-right align-right">
 				<div class="input-group">
-					<input type="text" class="form-control" name="promo" placeholder="ใช้สิทธิ PROMO CODE"/>
+					<input type="text" class="form-control" name="promo" value="{{promo}}" placeholder="ใช้สิทธิ PROMO CODE"/>
 					<span class="input-group-btn">
 						<button class="btn btn-primary">Apply</button>
 					</span>

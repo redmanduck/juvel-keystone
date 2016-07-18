@@ -46,6 +46,10 @@ exports = module.exports = function (app) {
 	app.get('/chlogin', routes.views.checkoutLogin)
 	app.post('/login', keystone.security.csrf.middleware.validate, routes.views.login)
 
+	app.get('/me', routes.views.accountMy)
+	app.get('/me/orders', routes.views.accountMyOrders)
+	app.get('/me/information', routes.views.accountMyInformation)
+
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
 

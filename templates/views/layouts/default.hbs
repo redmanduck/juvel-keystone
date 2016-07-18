@@ -42,11 +42,11 @@
 									<li {{#ifeq ../section key}}class="active"{{else}}{{/ifeq}}>
 										<a href="{{ href }}">{{ label }}</a>
 									</li>
-								{{/each}}
+									{{/each}}
 							</ul>
 							<ul class="nav navbar-nav navbar-right">
 								{{#if user}}
-								<li><a href="/me"><i class="fa fa-user"></i> บัญชีของฉัน</a></li>
+								<li><a href="/me"><i class="fa fa-lock"></i> บัญชีของฉัน</a></li>
 								<li><a href="/keystone/signout">Sign Out</a></li>
 								{{else}}
 								<li><a href="/signup">สมัคร</a></li>

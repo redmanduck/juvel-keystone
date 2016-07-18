@@ -24,6 +24,14 @@ exports.initLocals = function (req, res, next) {
 		{ label: 'Blog', key: 'blog', href: '/blog' },
 		{ label: 'เกียวกับเรา', key: 'contact', href: '/contact' }
 	];
+
+	res.locals.accountNavLinks = [
+		{ label: 'คำสั่งซื้อของฉัน', key: 'orders', href: '/me/orders' },
+		{ label: 'ข้อมูลของฉัน', key: 'information', href: '/me/information'},
+		{ label: 'แจ้งโอนเงิน', key: 'transfer', href: '/me/transfer'},
+		{ label: 'ประวัติการสั่งซื้อ', key: 'history', href: '/me/history'}
+	];
+
 	res.locals.user = req.user;
 	next();
 };
