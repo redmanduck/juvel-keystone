@@ -42,14 +42,7 @@
 	margin-top:0px;
 	padding:20px;
 	color: @brown-darker;
-	#gradient > .directional(@end-color: @brown-base; @start-color: @brown-lighter; @deg:80deg);
-}
-
-.juvel-header-reverse{
-	 &:extend(.juvel-header);
-	 padding:10px;
-	 margin-bottom:1px;
-	 #gradient > .directional(@end-color: @brown-base; @start-color: @brown-lighter; @deg:-80deg);
+	#gradient > .horizontal-three-colors(@end-color: @brown-lighter; @mid-color: lighten(@brown-base, 5%);  @start-color: @brown-lighter;);
 }
 
 .btn-attention{

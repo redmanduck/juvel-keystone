@@ -22,83 +22,82 @@
 
 	</head>
 	<body>
-
-		<div id="header">
-			<div class="container">
-				<div role="navigation" class="navbar navbar-simple">
-					<div class="container-fluid">
-						<div class="navbar-header">
-							<button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-							</button>
-							<a href="/" class="navbar-brand">
-							<img src="/images/logo.png" width="120"/>
-							</a>
-						</div>
-						<div class="collapse navbar-collapse">
-							<ul class="nav navbar-nav navbar-left">
-									{{# each navLinks}}
-									<li {{#ifeq ../section key}}class="active"{{else}}{{/ifeq}}>
-										<a href="{{ href }}">{{ label }}</a>
-									</li>
-									{{/each}}
-							</ul>
-							<ul class="nav navbar-nav navbar-right">
-								{{#if user}}
-								<li><a href="/me"><i class="fa fa-lock"></i> บัญชีของฉัน</a></li>
-								<li><a href="/keystone/signout">Sign Out</a></li>
-								{{else}}
-								<li><a href="/signup">สมัคร</a></li>
-								<li><a href="/chlogin">เข้าสู่ระบบ</a></li>
-								{{/if}}
-								<li><a href="/cart">
-									<i class="fa fa-shopping-bag" aria-hidden="true"></i>
-								</a></li>
-							</ul>
+			<div id="header">
+				<div class="container">
+					<div role="navigation" class="navbar navbar-simple">
+						<div class="container-fluid">
+							<div class="navbar-header">
+								<button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+								</button>
+								<a href="/" class="navbar-brand">
+								<img src="/images/logo.png" width="120"/>
+								</a>
+							</div>
+							<div class="collapse navbar-collapse">
+								<ul class="nav navbar-nav navbar-left">
+										{{# each navLinks}}
+										<li {{#ifeq ../section key}}class="active"{{else}}{{/ifeq}}>
+											<a href="{{ href }}">{{ label }}</a>
+										</li>
+										{{/each}}
+								</ul>
+								<ul class="nav navbar-nav navbar-right">
+									{{#if user}}
+									<li><a href="/me"><i class="fa fa-lock"></i> บัญชีของฉัน</a></li>
+									<li><a href="/keystone/signout">Sign Out</a></li>
+									{{else}}
+									<li><a href="/signup">สมัคร</a></li>
+									<li><a href="/chlogin">เข้าสู่ระบบ</a></li>
+									{{/if}}
+									<li><a href="/cart">
+										<i class="fa fa-shopping-bag" aria-hidden="true"></i>
+									</a></li>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div id="body">
-			<!--
-				Flash messages allow you to display once-off status messages to users, e.g. form
-				validation errors, success messages, etc
-			-->
-			{{#if messages}}
-			<div id="flash-messages" class="container">
-				{{#if messages.info}}
-				<div class="alert alert-info">
-						{{{flashMessages messages.info}}}
+			<div id="body">
+				<!--
+					Flash messages allow you to display once-off status messages to users, e.g. form
+					validation errors, success messages, etc
+				-->
+				{{#if messages}}
+				<div id="flash-messages" class="container">
+					{{#if messages.info}}
+					<div class="alert alert-info">
+							{{{flashMessages messages.info}}}
+					</div>
+					{{/if}}
+					{{#if messages.success}}
+					<div class="alert alert-success">
+							{{{flashMessages messages.success}}}
+					</div>
+					{{/if}}
+					{{#if messages.warning}}
+					<div class="alert alert-warning">
+							{{{flashMessages messages.warning}}}
+					</div>
+					{{/if}}
+					{{#if messages.error}}
+					<div class="alert alert-danger">
+							{{{flashMessages messages.error}}}
+					</div>
+					{{/if}}
 				</div>
 				{{/if}}
-				{{#if messages.success}}
-				<div class="alert alert-success">
-						{{{flashMessages messages.success}}}
-				</div>
-				{{/if}}
-				{{#if messages.warning}}
-				<div class="alert alert-warning">
-						{{{flashMessages messages.warning}}}
-				</div>
-				{{/if}}
-				{{#if messages.error}}
-				<div class="alert alert-danger">
-						{{{flashMessages messages.error}}}
-				</div>
-				{{/if}}
+				<!-- The content block should contain the body of your template's content-->
+				{{{body}}}
 			</div>
-			{{/if}}
-			<!-- The content block should contain the body of your template's content-->
-			{{{body}}}
-		</div>
-		<div class="container">
-			<div id="footer">
-				<p><small>&copy; Teeb Gradence Trading Co., Ltd. All Rights Reserved.</small></p>
-				<p><small>Powered by <a href="http://github.com/ssabpisa" target="_blank">@ssabpisa</a>.</small></p>
+			<div class="container">
+				<div id="footer">
+					<p><small>&copy; Teeb Gradence Trading Co., Ltd. All Rights Reserved.</small></p>
+					<p><strong><small>Made with <i class="fa fa-heart"></i> in Bangkok</small></strong></p>
+				</div>
 			</div>
-		</div>
 		{{!--
 			//- jQuery 1.11.3 is included by default, and required by both Bootstrap
 			//- and the KeystoneJS Content Editor. If you are not targeting IE8,
