@@ -44,7 +44,9 @@ exports = module.exports = function (app) {
 	app.post('/checkout/next', routes.views.checkoutNext)
 	app.get('/checkout/:name', routes.views.checkoutView)
 	app.get('/chlogin', routes.views.checkoutLogin)
+	app.get('/login', routes.views.login)
 	app.post('/login', keystone.security.csrf.middleware.validate, routes.views.login)
+	app.get('/products', routes.views.products)
 
 	app.get('/me', routes.views.accountMy)
 	app.get('/me/orders', routes.views.accountMyOrders)
