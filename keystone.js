@@ -12,7 +12,7 @@ var handlebars = require('express-handlebars');
 
 keystone.init({
 	'name': 'JUVEL Skincare',
-	'brand': 'JUVEL Skincare',
+	'brand': 'JUVEL',
 
 	'less': 'public',
 	'static': 'public',

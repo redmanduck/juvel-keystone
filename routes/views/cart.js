@@ -6,5 +6,7 @@ exports = module.exports = function (req, res) {
 	var locals = res.locals;
 
 	// Render the view
-	view.render('cart');
+	view.render('cart', {
+		cart: req.session.cart || []
+	});
 };
