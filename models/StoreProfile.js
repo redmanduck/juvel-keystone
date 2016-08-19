@@ -2,7 +2,7 @@ var keystone = require('keystone');
 var Types = keystone.Field.Types;
 
 
-var SD = new keystone.List('SiteConfig', {
+var SD = new keystone.List('StoreProfile', {
 	map: { name: 'dataName' },
 	autokey: { from: 'name', path: 'key', unique: true },
 });
@@ -11,7 +11,7 @@ var options = 'aboutBrand, companyName';
 SD.add({
 	dataName: { type: Types.Select, options: options, index: true },
     data: {
-		article: { type: Types.Html, wysiwyg: true, height: 150 },
+		article: { type: Types.Html, wysiwyg: true, height: 250 },
         shortText: { type: String },
 		images: { type: Types.CloudinaryImages }
 	}

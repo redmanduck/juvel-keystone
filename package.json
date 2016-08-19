@@ -13,6 +13,7 @@
     "moment": "^2.10.6",
     "pg": "^6.0.1",
     "pg-hstore": "^2.3.2",
+    "restful-keystone": "^0.3.0",
     "sequelize": "^3.23.4"
   },
   "devDependencies": {

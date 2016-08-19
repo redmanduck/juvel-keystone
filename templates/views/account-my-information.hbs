@@ -1,7 +1,7 @@
 <div class="container sukhumvit">
 		<div class="page-header row juvel-header">
 		<div class="container sukhumvit">
-			<h3>ข้อมูลของฉัน</h3>
+			<h2>ข้อมูลของฉัน</h2>
 		</div>
 </div>
 <form action="/checkout" method="post">
@@ -10,7 +10,16 @@
 				{{> account-nav section='information' }}
 			</div>
 			<div class="col-md-9">
-				คุณไม่มีคำสั่งซื้อ
+				<div class="jumbotron">
+					<h2>No order yet</h2>
+					<p>คุณยังไม่มีรายการสั่งซื้อสินค้าจากเรา</p>
+					<p>
+						<a href="/products" class="btn btn-default btn-large">
+						Explore Catalog
+						</a>
+					</p>
+				</div>
+
 			</div>
 		</div>
 	</form>

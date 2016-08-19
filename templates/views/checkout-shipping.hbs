@@ -12,14 +12,18 @@
 				
 				<div class="list-group">
 					{{#each _shippingMethod}}
-				  	<a href="#" class="list-group-item">
-						<strong>{{ title }}</strong>
-						<br/>
-						{{ description }}
+					
+				  	<label class="list-group-item" style="font-weight:normal">
+						
+						<strong>{{ title }} <br/></strong>
+						<span >{{ description }}</span>
+
 						<p>
-						{{ fixedFeeAmount }} บาท
+						<span data-fee="{{ fixedFeeAmount }}" data-shipping-id="{{_id}}" class="fixedFeeAmount">{{ fixedFeeAmount }}</span> 
+						บาท <input type="radio" name="shipping[_id]" value="{{_id}}" class="shipping_mode_radio"> 
 						</p>
-				  	</a>
+						
+				  	</label>
 					{{/each}}
 
 				</div>
@@ -40,7 +44,10 @@
 					</tr>
 					{{/each}}
 				</table>
-				<hr/>
+				<input type="hidden" class="calc-shipping-fee" name="shipping[fee]" value="0.00"/>
+				<table class="table">
+					<tr><td>ค่าจัดส่ง (Shipping)</td><td class="calc-shipping">{{ cart_order.shipping.fee }}</td></tr>
+				</table>
 				<h2><small class="sukhumvit">ทั้งหมด</small> <br/>1,200 <small>.-</small></h2>
 				<hr/>
 			</div>
@@ -52,4 +59,28 @@
 			</div>
 		</div>
 	</div>
+	
 </form>
+<script>
+	var selId = '{{ cart_order.shipping._id }}';
+	console.log(selId);
+
+	function digest(){
+		$('.list-group-item').removeClass('active');
+		$('.list-group-item:has(input:checked)').addClass('active');
+
+		var selectedShippingId = $( "[type=radio]:checked" ).attr("value");
+		var selectedFee = Number($(".fixedFeeAmount[data-shipping-id=" + selectedShippingId +  "]").attr("data-fee"));
+		$(".calc-shipping").text(selectedFee);
+		$(".calc-shipping-fee").val(selectedFee);
+	}
+
+	if(selId.length > 0){
+		$( "[type=radio][value=" + selId + "]" ).prop("checked", true);
+		digest();
+	}
+
+	$(".shipping_mode_radio").change(function(){
+		digest();
+	})
+</script>

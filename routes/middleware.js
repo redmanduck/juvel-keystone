@@ -29,7 +29,8 @@ exports.initLocals = function (req, res, next) {
 		{ label: 'คำสั่งซื้อของฉัน', key: 'orders', href: '/me/orders' },
 		{ label: 'ข้อมูลของฉัน', key: 'information', href: '/me/information'},
 		{ label: 'แจ้งโอนเงิน', key: 'transfer', href: '/me/transfer'},
-		{ label: 'ประวัติการสั่งซื้อ', key: 'history', href: '/me/history'}
+		{ label: 'ประวัติการสั่งซื้อ', key: 'history', href: '/me/history'},
+		{ label: 'Wishlist', key: 'wishlist', href: '/me/wishlist' }
 	];
 
 	res.locals.user = req.user;

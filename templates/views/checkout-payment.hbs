@@ -24,19 +24,14 @@
 			</div>
 			<div class="col-md-4 col-sm-6 pull-right align-right">
 				<div class="input-group">
-					<input type="text" class="form-control" name="promo"  value="{{promo}}" placeholder="ใช้สิทธิ PROMO CODE"/>
+					<input type="text" class="form-control" name="promo"  value="{{cart_order.promo}}" placeholder="ใช้สิทธิ PROMO CODE"/>
 					<span class="input-group-btn">
 						<button class="btn btn-primary">Apply</button>
 					</span>
 				</div></br>
-				<table class="table table-condensed">
-					<tr>
-						<td>Shitty Chinese Cream</td>
-						<td>2</td>
-						<td>1000 .-</td>
-					</tr>
+				<table class="table">
+					<tr><td>ค่าจัดส่ง (Shipping)</td><td class="calc-shipping">{{ cart_order.shipping.fee }}</td></tr>
 				</table>
-				<hr/>
 				<h2><small class="sukhumvit">ทั้งหมด</small> <br/>1,200 <small>.-</small></h2>
 				<hr/>
 			</div>

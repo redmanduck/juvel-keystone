@@ -19,7 +19,7 @@ keystone.init({
 	'favicon': 'public/favicon.ico',
 	'views': 'templates/views',
 	'view engine': 'hbs',
-
+	'wysiwyg cloudinary images': true,
 	'custom engine': handlebars.create({
 		layoutsDir: 'templates/views/layouts',
 		partialsDir: 'templates/views/partials',
@@ -80,17 +80,14 @@ keystone.Email.defaults.templateEngine = require('handlebars');
 
 // Configure the navigation bar in Keystone's Admin UI
 keystone.set('nav', {
-	landing: ['carousels', 'site-configs'],
+	landing: ['carousels', 'store-profiles'],
 	blog: ['posts', 'post-categories'],
 	// galleries: 'galleries',
-	enquiries: 'enquiries',
 	product: ['products', 'product-collections', 'product-reviews', 'product-promotions'],
-	users: ['users', 'mailing-lists'],
-	cart: ['shipping-methods'],
-	dashboard: [{
-      label: "Dashboard",
-			key: "dashboard",
-      path: "/cadmium/dashboard"
+	sales: ['orders', 'order-items', 'users', 'mailing-lists', 'shipping-methods', {
+      label: "GA",
+			key: "ga",
+      path: "/teebland/ga"
     }]
 });
 

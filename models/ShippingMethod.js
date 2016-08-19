@@ -10,7 +10,7 @@ ShippingMethod.add({
 	title: { type: String, required: true, default: 'EMS'},
     description: { type: String },
 	type: { type: Types.Select, options: 'international, domestic', default: 'domestic', index: true },
-    fixedFeeAmount: {type: String, required: true, default: 0.00 }
+    fixedFeeAmount: {type: Types.Money, required: true, default: 0.00, currency: 'th' }
 });
 
 ShippingMethod.register();

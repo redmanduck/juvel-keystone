@@ -9,25 +9,29 @@
 		</ol>
 		<div class="row">
 			<div class="col-md-5 col-sm-6">
-				<div class="form-group sukhumvit">
-					<label for="name">ชื่อ นามกสุล</label>
-					<input type="text" class="form-control" name="name" value="{{ cart_order.info.name.first }} {{ cart_order.info.name.last }}" placeholder="Your Name">
+				<div class="form-group col-md-6  sukhumvit">
+					<label for="name">ชื่อ</label>
+					<input type="text" class="form-control" name="info[name][first]" value="{{ cart_order.info.name.first }}" placeholder="Your Name">
 				</div>
-				<div class="form-group sukhumvit">
+				<div class="form-group col-md-6  sukhumvit">
+					<label for="name">นามกสุล</label>
+					<input type="text" class="form-control" name="info[name][last]" value="{{ cart_order.info.name.last }}" placeholder="Your Name">
+				</div>
+				<div class="form-group  col-md-12 sukhumvit">
 					<label for="name">Email</label>
-					<input type="email" class="form-control" name="email" readonly value="{{ cart_order.info.email }}" placeholder="" size="5"/>
+					<input type="email" class="form-control" name="info[email]" readonly value="{{ cart_order.info.email }}" placeholder="" size="5"/>
 				</div>
-				<div class="form-group sukhumvit">
+				<div class="form-group col-md-12 sukhumvit">
 					<label for="name">Mobile Phone</label>
-					<input type="text" class="form-control" name="phone" placeholder="" size="5"/>
+					<input type="text" class="form-control" name="info[phone]" placeholder="Contact Number" value="{{ cart_order.info.phone }}" placeholder="" size="5"/>
 				</div>
-				<div class="form-group sukhumvit">
+				<div class="form-group col-md-12 sukhumvit">
 					<label for="name">ที่อยู่</label>
-					<input type="text" class="form-control" name="address[street1]" value="{{ cart_order.info.address.street1 }}"  placeholder="บ้านเลขที่ หมู่บ้าน"/>
-					<input type="text" class="form-control" name="address[street2]" value="{{ cart_order.info.address.street2 }}"   placeholder="ซอย ถนน" style="margin-top:5px"/>
-					<input type="text" class="form-control" name="address[suburb]" value="{{ cart_order.info.address.suburb }}"   placeholder="ตำบล / เขต " style="margin-top:5px"/>
-					<input type="text" class="form-control" name="address[state]" value="{{ cart_order.info.address.state }}"  value="กรุงเทพ / Bangkok" style="margin-top:5px"/>
-					<input type="text" class="form-control" name="address[postcode]"  value="{{ cart_order.info.address.postcode }}"  placeholder="รหัสไปรษณีย์" size="5" style="margin-top:5px"/>
+					<input type="text" class="form-control" name="info[address][street1]" value="{{ cart_order.info.address.street1 }}"  placeholder="บ้านเลขที่ หมู่บ้าน"/>
+					<input type="text" class="form-control" name="info[address][street2]" value="{{ cart_order.info.address.street2 }}"   placeholder="ซอย ถนน" style="margin-top:5px"/>
+					<input type="text" class="form-control" name="info[address][suburb]" value="{{ cart_order.info.address.suburb }}"   placeholder="ตำบล / เขต " style="margin-top:5px"/>
+					<input type="text" class="form-control" name="info[address][state]" value="{{ cart_order.info.address.state }}"  value="กรุงเทพ / Bangkok" style="margin-top:5px"/>
+					<input type="text" class="form-control" name="info[address][postcode]"  value="{{ cart_order.info.address.postcode }}"  placeholder="รหัสไปรษณีย์" size="5" style="margin-top:5px"/>
 				</div>
 			</div>
 			<div class="col-md-4 col-sm-6 pull-right align-right">
