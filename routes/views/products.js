@@ -5,6 +5,17 @@ exports = module.exports = function (req, res) {
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
 
-	// Render the view
-	view.render('products');
+	
+
+	var q = keystone.list('Product').model.find().where('state', 'published').sort('title');
+	q.exec(function (err, results) {
+		// locals.data.posts = results;
+
+		// Render the view
+		view.render('products', {
+			products: results
+		});
+		
+	});
+
 };

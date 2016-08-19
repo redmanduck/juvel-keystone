@@ -9,47 +9,36 @@
 		</ol>
 		<div class="row">
 			<div class="col-md-5 col-sm-6">
+				
 				<div class="list-group">
-				  <a href="#" class="list-group-item active">
-				    <strong>Kerry Express</strong>
-				    <br/>
-				    รับสินค้าภายใน 3 วันทำการ สามารถ Track ได้
-				    <p>
-				    	45.00 บาท
-				    </p>
-				  </a>
-				  <a href="#" class="list-group-item">
-				    <strong>ผัสดุลงทะเบียน (EMS)</strong>
-				    <br/>
-				    รับสินค้าภายใน 4 วันทำการ สามารถ Track ได้
-				    <p>
-				    	30.00 บาท
-				    </p>
-				  </a>
-				  <a href="#" class="list-group-item">
-				    <strong>ผัสดุทั่วไป</strong>
-				    <br/>
-				    รับสินค้าภายใน 7 วันทำการ 
-				    <p>
-				    	Free Shipping
-				    </p>
-				  </a>
+					{{#each _shippingMethod}}
+				  	<a href="#" class="list-group-item">
+						<strong>{{ title }}</strong>
+						<br/>
+						{{ description }}
+						<p>
+						{{ fixedFeeAmount }} บาท
+						</p>
+				  	</a>
+					{{/each}}
 
 				</div>
 			</div>
 			<div class="col-md-4 col-sm-6 align-right pull-right">
 				<div class="input-group">
-					<input type="text" class="form-control" name="promo" value="{{promo}}" placeholder="ใช้สิทธิ PROMO CODE"/>
+					<input type="text" class="form-control" name="promo" value="{{cart_order.promo}}" placeholder="ใช้สิทธิ PROMO CODE"/>
 					<span class="input-group-btn">
 						<button class="btn btn-primary">Apply</button>
 					</span>
 				</div></br>
 				<table class="table table-condensed">
+					{{#each _cartItem}}
 					<tr>
-						<td>Shitty Chinese Cream</td>
-						<td>2</td>
-						<td>1000 .-</td>
+						<td>{{ title }}</td>
+						<td>{{ quantity }}</td>
+						<td>{{ price }} .-</td>
 					</tr>
+					{{/each}}
 				</table>
 				<hr/>
 				<h2><small class="sukhumvit">ทั้งหมด</small> <br/>1,200 <small>.-</small></h2>

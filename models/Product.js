@@ -12,9 +12,15 @@ Product.add({
 	tagLine: { type: String },
 	state: { type: Types.Select, options: 'draft, published', default: 'draft', index: true },
 	mainImage: { type: Types.CloudinaryImage },
+	otherImages: { type: Types.CloudinaryImages },
 	description: { type: Types.Html, wysiwyg: true, height: 150 },
+	dataTab1Name : {type: String, default: 'เกี่ยวกับสินค้า', required: true },
+	dataTab2Name : {type: String, default: 'ข้อมูลผู้บริโภค', required: true },
+	dataTab1: {type: Types.Html, wysiwyg: true, height: 100 },
+	dataTab2: {type: Types.Html, wysiwyg: true, height: 100 },
+	basePrice: {type: Types.Number },
 	collections: { type: Types.Relationship, ref: 'ProductCollection', many: true }
 });
 
-Product.defaultColumns = 'title, state|20%, collections|20%';
+Product.defaultColumns = 'title, basePrice, state|20%, collections|20%';
 Product.register();

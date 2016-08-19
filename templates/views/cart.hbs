@@ -5,42 +5,42 @@
 		</div>
 
 		<div class="row sukhumvit">
-			<div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
+			<div class="col-md-8 col-md-offset-2 col-sm-12">
 				
-				<div class="row cart-item">
-					<div class="col-md-2 col-sm-2 col-xs-5">
-						<img class="media-object img-rounded" src="http://s9.lximg.com/images/pictures/8197/zoom_2851c42bd7a5f6218f08f7be00c7351432fcbd14_1453278186_SUPERCLEANSE.jpg" width="100%" style="margin: 5px">
-					</div>
-					<div class="col-md-4 col-sm-4 col-xs-12">
-						<h4>Darkening Serum 150g</h4>
-						1,035.00.-<br/>
-					</div>
-					<div class="col-md-2 col-sm-2 col-xs-4">
-						<div class="form-group">
-						    <label>จำนวน</label>
-						    <input name="qty" class="form-control" value="1" placeholder="0">
-						  </div>
-					</div>
-					<div class="col-md-1 col-sm-1 col-xs-1">
-						<a class="btn btn-link"><i class="fa fa-trash-o"></i></a>
-					</div>
-				</div>
-
+				<table  style="width:100%">
+					<tbody>
+						{{#each cart}}
+						<tr>
+							<td width="45px">
+								<img class="media-object img-rounded" src="http://s9.lximg.com/images/pictures/8197/zoom_2851c42bd7a5f6218f08f7be00c7351432fcbd14_1453278186_SUPERCLEANSE.jpg" width="45px" style="margin: 5px">
+							</td>
+							<td><a href="#">{{ title }}</a></td>
+							<td><span class="cart-item-price" data-price="{{ basePrice }}">{{ basePrice }}</span><small>บาท</small></td>
+							<td>
+								<input type="text" value="1" class="form-control" size="1"></input>
+							</td>
+							<td>
+								<a class="btn btn-link"><i class="fa fa-trash-o"></i> เอาออก</a> 
+							</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
 
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-10 col-md-offset-1 col-sm-11 col-sm-offset-1 col-xs-12 align-right">
+			<div class="col-md-8 col-md-offset-2 align-right">
 				<h2><small class="sukhumvit">SUBTOTAL</small> <br/>1,200 <small>.-</small></h2>
 				<hr/>
 			</div>
 		</div>
 		<div class="row">
 
-			<div class="col-md-10 col-md-offset-1 col-sm-11 col-sm-offset-1 col-xs-12 align-right">
+			<div class="col-md-8 col-md-offset-2 align-right">
 				<form action="/checkout" method="post">
 
-				<a href="#" class="btn btn-default sukhumvit">Continue Shopping</a>
+				<a href="/products" class="btn btn-default sukhumvit">Continue Shopping</a>
 				<button type="submit" class="btn btn-primary sukhumvit">CHECKOUT
 				<i class="fa fa-chevron-right"></i></button>
 				</form>

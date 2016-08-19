@@ -1,36 +1,61 @@
-<div class="container">
-<div class="row">
-<div class="col-md-4">
-	<img src="http://s9.lximg.com/images/pictures/8197/zoom_2851c42bd7a5f6218f08f7be00c7351432fcbd14_1453278186_SUPERCLEANSE.jpg" width="300"/>
-</div>
-<div class="col-md-8">
-<h4>Midnight Radiance Alp rose mask</h4>
-<h4><small>30g</small></h4>
-Enriched with alpine rose stem cell from Switzerland. Restore damaged cell, dramatically brighten up skin tone. Revitalizing and moisturizing leaving your skin noticeably healthier and radiant.
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-4'>
+      <img src='http://s9.lximg.com/images/pictures/8197/zoom_2851c42bd7a5f6218f08f7be00c7351432fcbd14_1453278186_SUPERCLEANSE.jpg' width='300' />
+    </div>
+    {{#each products}}
+    <div class='col-md-8'>
+      <h4>{{ title }}</h4>
+      <h4><small>{{tagLine}}</small></h4>
+      <div class="flex">
+        {{{description}}}
+      </div>
+      <div class="flex">
+        {{#each otherImages}}
+          <img src="{{url}}"/>
+        {{/each}}
+      </div>
+      <p>
+        <br/>
+        <form method="POST" action="/cart">
+        <input type="hidden" name="productId" value="{{ _id }}"/>
+        <button type="submit" class='btn btn-attention'>
+          <i class='fa fa-plus'></i> Add to Cart
+        </button>
+        <button class='btn btn-default'>
+          <i class='fa fa-heart'></i> Add to Wishlist
+        </button>
+        </form>
+      </p>
+      <hr/>
+      <div id="tabs">
+      <ul>
+        <li><a href="#tabs-1">{{ dataTab1Name }}</a></li>
+        <li><a href="#tabs-2">{{ dataTab2Name }}</a></li>
+        <li><a href="#tabs-3">รีวิว</a></li>
+      </ul>
+      <div class='panel panel-default'>
+        <div class='panel-body'>
+          <div id="tabs-1">
+            {{{dataTab1}}}
+          </div>
+          <div id="tabs-2">
+            {{{dataTab2}}}
+          </div>
+          <div id="tabs-3">
+            <p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
+            <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+          </div>
+        </div>
+      </div>
 
-Restore damaged cell
-Antioxidant. Reduce fine lines
-Naturally brighten up the skin by boost up collagen production and reduce melanin production
-Moisturizing leaving your skin softer and smoother
-Alleviate red spots and speed up regeneration of new cell
-
-Directions: Use frequently as your last step overnight mask. For boost up, apply thick layer 2-3 times a week at night.
-<p>
-<br/>
-<button class="btn btn-primary"><i class="fa fa-plus"></i> Add to Cart</button>
-<button class="btn btn-default"><i class="fa fa-heart"></i> Add to Wishlist</button>
-</p>
-<div class="panel panel-default">
-<div class="panel-body">
-<h5>Caution:</h5>
-<small>For external use only. Not to be swallowed. Avoid eye contact. Discontinue use immediately if show sign of rashes or irritation.</small>
-<h5>Ingredients:</h5>
-<small>
-1 2-Hexanediol, Acety Gutamine, Alcohol, Alpha-Arbutin, Abutin, Ascorbyl Palmitate, Bacillus/Soybean/Folic Acid Ferment Extract, Butylene Glycol, Butylparaben, Alkyl BenZoate, Isoparaffin, Ceteareth-20, Cetearyl Alcohol, CI 14720, Cyclopentasiloxane, Dimethicone, Dimethiconol, Disodium EDTA, Ethylparaben, Glutathione, Glycerin, Glyceryl Stearate, Glycine Soja (Soybean) Protein, Hydrolyzed Rice Bran Protein, Isobutylparaben, Isohexadecane, Isomalt, Isopropyl Palmitate, Kigelia Africana Fruit Extract, Lactic Acid, Lactic Acid, Laureth-23, Laureth-4, Laureth-7, Lecithin, Linoleic Acid, Linolenic Acid, Methylparaben, Oxido Reductases, PEG-100 Stearate, PEG-40 Stearate, Perfume, Phenoxyethanol, Polymethylsilsesquioxane, Propylene Glycol, Propylparaben, Rhododendron Ferrugineum Leaf Cell Culture Extract, Sodium Benzoate, Sodium Chloride, Sodium Hyaluronate, Sodium Polyacrylate, Sodium Sulfate, Tocophertl Acetate, Tranexamic Acid, Vitamin E acetate, water
-</small>
+        
+      </div>
+    </div>
+    {{/each}}
 </div>
-</div>
-
-</div>
-</div>
-</div>
+<script>
+  $( function() {
+    $( "#tabs" ).tabs();
+  } );
+  </script>
