@@ -34,16 +34,14 @@
 					<input type="text" class="form-control" name="info[address][postcode]"  value="{{ cart_order.info.address.postcode }}"  placeholder="รหัสไปรษณีย์" size="5" style="margin-top:5px"/>
 				</div>
 			</div>
-			<div class="col-md-4 col-sm-6 pull-right align-right">
+			<div class="col-md-4 col-sm-6 align-right pull-right">
 				<div class="input-group">
 					<input type="text" class="form-control" name="promo" value="{{cart_order.promo}}" placeholder="ใช้สิทธิ PROMO CODE"/>
 					<span class="input-group-btn">
 						<button class="btn btn-primary">Apply</button>
 					</span>
 				</div></br>
-				<hr/>
-				<h2><small class="sukhumvit">ทั้งหมด</small> <br/>1,200 <small>.-</small></h2>
-				<hr/>
+				{{> cost-table }}
 			</div>
 		</div>
 		<div class="row">
@@ -54,3 +52,19 @@
 		</div>
 	</div>
 </form>
+<script>
+
+	function digest(){
+
+		var feeSum = 0;
+		$('.fee-entry').each(function(){
+			feeSum += Number($(this).val());
+		});
+		
+		$(".value-subtotal").text(feeSum);
+		
+		$(".section_shipping_fee").hide();
+	}
+	
+	digest();
+</script>

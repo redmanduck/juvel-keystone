@@ -1,0 +1,10 @@
+				<input type="hidden" class="calc-shipping-fee fee-entry" name="shipping[fee]" value="{{ cart_order.shipping.fee }}"/>
+				<table class="table">
+					{{#each cart_order.items }}
+						<input type="hidden" class="fee-entry" value="{{ mult basePrice qty }}"/>
+						<tr><td>{{title}} <small>{{ qty }} ชิ้น</small></td><td>{{ mult basePrice qty }}</td></tr>
+					{{/each}}
+					<tr class="section_shipping_fee"><td>ค่าจัดส่ง (Shipping)</td><td class="calc-shipping">{{ cart_order.shipping.fee }}</td></tr>
+				</table>
+				<h2><small class="sukhumvit">ทั้งหมด</small> <br/><span class="value-subtotal"></span> <small>.-</small></h2>
+				<hr/>

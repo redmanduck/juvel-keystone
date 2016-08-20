@@ -11,17 +11,15 @@
 				{{> account-nav section='orders' }}
 			</div>
 			<div class="col-md-9">
+				{{#each orders}}
 				<div class="panel panel-default">
 				  <div class="panel-heading">
 				  <div class="row">
 				  <div class="col-md-2">
-				  	<small>สั่งซื้อเมื่อวันที่</small><br>30/10/2005
+				  	<small>สั่งซื้อเมื่อวันที่</small><br> {{ date createdAt }}
 				  </div>
 				  <div class="col-md-2">
-				  	<small>รายการสั่งซื้อ</small><br>#1030000
-				  </div>
-				  <div class="col-md-2">
-				  	<small>ยอดสุทธิ</small><br>3.50 บาท
+				  	<small>ยอดสุทธิ</small><br>{{ amount }} บาท
 				  </div>
 				  <div class="col-md-2">
 				  	<small>Status</small><br>Shipped
@@ -33,16 +31,16 @@
 				  </div>
 				  </div>
 				  </div>
-				  
+				  {{#each items}}
 				  <div class="panel-body">
 				    <div class="row">
 					    <div class="col-md-1">
-					   		<img src="http://s9.lximg.com/images/pictures/8197/zoom_2851c42bd7a5f6218f08f7be00c7351432fcbd14_1453278186_SUPERCLEANSE.jpg"
+					   		<img src="{{product.mainImage.secure_url}}"
 							    style="width: 60px"/>
 					    </div>
 					    <div class="col-md-7">
-					    	<h4><a href="#">Black Face Antenna Cream</a></h4>
-					    	จำนวน: 1 
+					    	<h4><a href="#">{{product.title}}</a></h4>
+					    	จำนวน: {{quantity}}
 							
 					    		
 					    </div>
@@ -52,7 +50,10 @@
 					    </div>
 				    </div>
 				  </div>
+				  {{/each}}
+
 				</div>
+				{{/each}}
 			</div>
 		</div>
 	</form>

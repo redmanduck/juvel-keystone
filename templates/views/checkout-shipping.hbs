@@ -20,7 +20,9 @@
 
 						<p>
 						<span data-fee="{{ fixedFeeAmount }}" data-shipping-id="{{_id}}" class="fixedFeeAmount">{{ fixedFeeAmount }}</span> 
-						บาท <input type="radio" name="shipping[_id]" value="{{_id}}" class="shipping_mode_radio"> 
+						บาท 
+						
+						<input type="radio" name="shipping[_id]" value="{{_id}}" class="shipping_mode_radio"> 
 						</p>
 						
 				  	</label>
@@ -28,6 +30,8 @@
 
 				</div>
 			</div>
+
+
 			<div class="col-md-4 col-sm-6 align-right pull-right">
 				<div class="input-group">
 					<input type="text" class="form-control" name="promo" value="{{cart_order.promo}}" placeholder="ใช้สิทธิ PROMO CODE"/>
@@ -35,17 +39,10 @@
 						<button class="btn btn-primary">Apply</button>
 					</span>
 				</div></br>
-				<input type="hidden" class="calc-shipping-fee fee-entry" name="shipping[fee]" value="0.00"/>
-				<table class="table">
-					{{#each cart_order.items }}
-						<input type="hidden" class="fee-entry" value="{{ basePrice }}"/>
-						<tr><td>{{title}} <small>{{ qty }} ชิ้น</small></td><td>{{ basePrice }}</td></tr>
-					{{/each}}
-					<tr><td>ค่าจัดส่ง (Shipping)</td><td class="calc-shipping">{{ cart_order.shipping.fee }}</td></tr>
-				</table>
-				<h2><small class="sukhumvit">ทั้งหมด</small> <br/><span class="value-subtotal"></span> <small>.-</small></h2>
-				<hr/>
+				{{> cost-table }}
 			</div>
+
+
 		</div>
 		<div class="row">
 			<div class="col-md-3 col-sm-4 col-xs-12 align-right pull-right">
@@ -58,8 +55,6 @@
 </form>
 <script>
 	var selId = '{{ cart_order.shipping._id }}';
-	console.log(selId);
-
 	function digest(){
 		$('.list-group-item').removeClass('active');
 		$('.list-group-item:has(input:checked)').addClass('active');

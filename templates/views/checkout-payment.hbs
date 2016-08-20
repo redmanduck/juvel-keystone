@@ -1,6 +1,6 @@
 <form method="POST" action="/checkout/next">
 	<div class="container">
-		<input type="hidden" name="_next" value="payment"/>
+		<input type="hidden" name="_next" value="done"/>
 		<ol class="breadcrumb sukhumvit">
 			<li>ตะกร้า</li>
 			<li>ข้อมูลผู้รับ</li>
@@ -10,31 +10,32 @@
 		<div class="row">
 			<div class="col-md-5 col-sm-6">
 				<div class="list-group">
-				  <a href="#" class="list-group-item active">
-				    <strong>Bank Transfer</strong>
-				    <br/>
-				    โอนเงินผ่านธนาคาร แล้วอัพโหลด Slip
-				  </a>
-				  <a href="#" class="list-group-item">
-				    <strong>บัตรเครดิต</strong>
-				    <br/>
-				    ชำระผ่านบัตรเครดิต VISA หรือ Mastercard
-				  </a>
+					<label class="list-group-item" style="font-weight:normal">
+						
+						<strong>Bank Transfer<br/></strong>
+						<span >โอนเงินผ่านธนาคาร แล้วอัพโหลด Slip</span>
+						<input type="radio" name="payment[paymentMethod]" value="bankTransfer" class="payment_mode_radio"> 
+
+				  </label>
+					<label class="list-group-item" style="font-weight:normal">
+						
+						<strong>Credit Card<br/></strong>
+						<span >บัตรเครดิต VISA หรือ Mastercard</span>
+						<input type="radio" name="payment[paymentMethod]" value="creditCard" class="payment_mode_radio"> 
+
+				  </label>
 				</div>
 			</div>
-			<div class="col-md-4 col-sm-6 pull-right align-right">
+			<div class="col-md-4 col-sm-6 align-right pull-right">
 				<div class="input-group">
-					<input type="text" class="form-control" name="promo"  value="{{cart_order.promo}}" placeholder="ใช้สิทธิ PROMO CODE"/>
+					<input type="text" class="form-control" name="promo" value="{{cart_order.promo}}" placeholder="ใช้สิทธิ PROMO CODE"/>
 					<span class="input-group-btn">
 						<button class="btn btn-primary">Apply</button>
 					</span>
 				</div></br>
-				<table class="table">
-					<tr><td>ค่าจัดส่ง (Shipping)</td><td class="calc-shipping">{{ cart_order.shipping.fee }}</td></tr>
-				</table>
-				<h2><small class="sukhumvit">ทั้งหมด</small> <br/>1,200 <small>.-</small></h2>
-				<hr/>
+				{{> cost-table }}
 			</div>
+
 		</div>
 		<div class="row">
 			<div class="col-md-3 col-sm-4 col-xs-12 align-right pull-right">
@@ -44,3 +45,31 @@
 		</div>
 	</div>
 </form>
+
+<script>
+	var selId = '{{ cart_order.payment.paymentMethod }}';
+	function digest(){
+		$('.list-group-item').removeClass('active');
+		$('.list-group-item:has(input:checked)').addClass('active');
+
+		var selectedId = $( "[type=radio]:checked" ).attr("value");
+
+		var feeSum = 0;
+		$('.fee-entry').each(function(){
+			feeSum += Number($(this).val());
+		});
+		$(".value-subtotal").text(feeSum);
+	}
+
+	if(selId.length > 0){
+		$( "[type=radio][value=" + selId + "]" ).prop("checked", true);
+		digest();
+	}
+
+	$(".payment_mode_radio").change(function(){
+		digest();
+	});
+
+	digest();
+	
+</script>

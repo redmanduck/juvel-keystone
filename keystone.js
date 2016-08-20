@@ -13,7 +13,6 @@ var handlebars = require('express-handlebars');
 keystone.init({
 	'name': 'JUVEL Skincare',
 	'brand': 'JUVEL',
-
 	'less': 'public',
 	'static': 'public',
 	'favicon': 'public/favicon.ico',
@@ -27,9 +26,7 @@ keystone.init({
 		helpers: new require('./templates/views/helpers')(),
 		extname: '.hbs',
 	}).engine,
-
 	'emails': 'templates/emails',
-
 	'auto update': true,
 	'session': true,
 	'auth': true,
