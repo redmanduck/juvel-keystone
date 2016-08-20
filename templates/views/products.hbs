@@ -1,78 +1,117 @@
-<div class='container'>
-  <div class='row'>
-    <div class='col-md-4'>
-      <img src='http://s9.lximg.com/images/pictures/8197/zoom_2851c42bd7a5f6218f08f7be00c7351432fcbd14_1453278186_SUPERCLEANSE.jpg' width='300' />
-    </div>
-    {{#each products}}
-    <div class='col-md-8'>
-      <h4>{{ title }}</h4>
-      <h4><small>{{tagLine}}</small></h4>
-      <table>
-        <!-- fb -->
-        <tr>
-          <td >
-            <div id="fb-root"></div>
-            <div class="fb-share-button" data-href="window.location.href" data-layout="button_count" data-size="small" 
-          data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" 
-          href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div>
-        </td>
-        <td style="padding-left:5px; padding-top:5px;">
-            <div class="line-it-button" style="display: none" data-type="share-a" data-lang="en"></div>
-            <script src="//scdn.line-apps.com/n/line_it/thirdparty/loader.min.js" async="async"　defer="defer"></script>
-            <!--line-->
-        </td>
-        
-        </tr>
-      </table>
-      <p class="flex">
-        {{{description}}}
-      </p>
-      <div class="flex">
-        {{#each otherImages}}
-          <img src="{{url}}"/>
-        {{/each}}
-      </div>
-      <p>
-        <br/>
-        <form method="POST" action="/cart">
-          <input type="hidden" name="productId" value="{{ _id }}"/>
-          <button type="submit" class='btn btn-attention'>
-            <i class='fa fa-plus'></i> Add to Cart
-          </button>
-          <button class='btn btn-default'>
-            <i class='fa fa-heart'></i> Add to Wishlist
-          </button>
-        </form>
-      </p>
-      <hr/>
-      <div id="tabs">
-      <ul>
-        <li><a href="#tabs-1">{{ dataTab1Name }}</a></li>
-        <li><a href="#tabs-2">{{ dataTab2Name }}</a></li>
-        <li><a href="#tabs-3">รีวิว</a></li>
-      </ul>
-      <div class='panel panel-default'>
-        <div class='panel-body'>
-          <div id="tabs-1">
-            {{{dataTab1}}}
-          </div>
-          <div id="tabs-2">
-            {{{dataTab2}}}
-          </div>
-          <div id="tabs-3">
-            <p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
-            <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
-          </div>
-        </div>
-      </div>
 
-        
+<div class='container'>
+  
+  <div id="product-catalog-carousel" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner" role="listbox">
+        {{#each products}}
+          <div class="item {{#if @first}}active{{/if}}">
+            <div class='col-md-4'>
+              <img src='{{mainImage.url}}' width='300' />
+            </div>
+            <div class='col-md-8'>
+              <h4>{{ title }}</h4>
+              <h4><small>{{tagLine}}</small></h4>
+              <table>
+                <!-- fb -->
+                <tr>
+                  <td >
+                    <div id="fb-root"></div>
+                    <div class="fb-share-button" data-href="window.location.href" data-layout="button_count" data-size="small" 
+                  data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" 
+                  href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div>
+                </td>
+                <td style="padding-left:5px; padding-top:5px;">
+                    <div class="line-it-button" style="display: none" data-type="share-a" data-lang="en"></div>
+                    <script src="//scdn.line-apps.com/n/line_it/thirdparty/loader.min.js" async="async"　defer="defer"></script>
+                    <!--line-->
+                </td>
+                
+                </tr>
+              </table>
+              <p class="flex">
+                {{{description}}}
+              </p>
+              <div class="flex">
+                {{#each otherImages}}
+                  <img src="{{url}}"/>
+                {{/each}}
+              </div>
+              <p>
+                <br/>
+                <form method="POST" action="/cart">
+                  <input type="hidden" name="productId" value="{{ _id }}"/>
+                  <button type="submit" class='btn btn-attention'>
+                    <i class='fa fa-plus'></i> Add to Cart
+                  </button>
+                  <button class='btn btn-default'>
+                    <i class='fa fa-heart'></i> Add to Wishlist
+                  </button>
+                </form>
+              </p>
+              <hr/>
+              <div class="tab-ctrl">
+              <ul>
+                <li><a href="#tabs-1">{{ dataTab1Name }}</a></li>
+                <li><a href="#tabs-2">{{ dataTab2Name }}</a></li>
+                <li><a href="#tabs-3">รีวิว</a></li>
+              </ul>
+              <div class='panel panel-default'>
+                <div class='panel-body'>
+                  <div id="tabs-1">
+                    {{{dataTab1}}}
+                  </div>
+                  <div id="tabs-2">
+                    {{{dataTab2}}}
+                  </div>
+                  <div id="tabs-3">
+                    <p>No Review Yet</p>
+                  </div>
+                </div>
+              </div>
+
+                
+              </div>
+            </div>
+          </div>
+        {{/each}}
+  </div>
+  </div>
+  
+</div>
+
+<div class="container">
+    <div class="row">
+      <div class="pull-left" style="padding-left:40px">
+        <h4>Other Products</h4>
+        <nav aria-label="Page navigation">
+          <ul class="pagination"> 
+            {{#each products}}
+                <li data-target="#product-catalog-carousel" data-slide-to="{{@index}}">
+                    <a href="#">
+                      <div style="background-image:url({{mainImage.secure_url}});background-size:100px; background-repeat:no-repeat; width:100px; height: 100px;">
+                      </div>
+                    </a>
+                </li>
+            {{/each}}
+            
+          </ul>
+        </nav>
       </div>
     </div>
-    {{/each}}
 </div>
+
+ 
 <script>
   $( function() {
-    $( "#tabs" ).tabs();
+    $( ".tab-ctrl" ).tabs();
+    $('.carousel').carousel({
+      interval: false
+    });
+    $('.carousel').on('slide.bs.carousel', function () {
+      console.log("x")
+      window.scrollTo(0,0);
+    });
   } );
+  
+
   </script>

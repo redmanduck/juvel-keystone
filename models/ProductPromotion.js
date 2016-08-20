@@ -10,7 +10,7 @@ ProductPromotion.add({
 	code: { type: String, required: true, unique: true },
 	willExpire: {type: Boolean, default: false},
 	expirationDate: {type: Date },
-	mode: { type: Types.Select, options: 'amount, percent, free-shipping', default: 'amount', index: true }
+	mode: { type: Types.Select, options: 'fixedAmount, percentage', default: 'fixedAmount', index: true }
 });
 
 

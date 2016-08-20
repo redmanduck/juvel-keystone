@@ -18,7 +18,10 @@ exports = module.exports = {
 		//Product ID to add to cart
 		var productId = req.body.productId;
 
-		req.session.cart = [];
+		if(!req.session.cart){
+			req.session.cart = [];
+		}
+
 		keystone.list('Product').model.findOne({
 			_id: productId
 		}).exec(function(err, product){

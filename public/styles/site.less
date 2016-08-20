@@ -49,14 +49,15 @@
 	#gradient > .horizontal-three-colors(@end-color: @brown-lighter; @mid-color: lighten(@brown-base, 5%);  @start-color: @brown-lighter;);
 }
 
+
 .btn-attention{
 	border-color:#c94b5e;
 	color: white;
 	#gradient > .directional(@start-color: #D07C8D; @end-color: #C94B5E; @deg:55deg);
-}
-
-.btn-attention:hover{
-	color: white;
+	&:hover, &:active, &:focus{
+		color: white;
+		background-color:#C94B5E;
+	}
 }
 
 .align-right{
@@ -70,4 +71,14 @@
 
 .shipping_mode_radio{
 	visibility: hidden;
+}
+
+.list-group-item{
+	cursor: pointer;
+}
+
+.carousel-product-indicators{
+	li{
+		display: inline;
+	}
 }

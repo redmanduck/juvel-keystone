@@ -1,4 +1,5 @@
 var keystone = require('keystone');
+var _ = require('lodash');
 
 exports = module.exports = function(req, res) {
 
@@ -8,6 +9,18 @@ exports = module.exports = function(req, res) {
 	if (!req.user) {
 		return res.redirect('/chlogin');
 	}
+	
+	var qtySet = req.body.qtySet;
+	
+	Object.keys(qtySet).forEach(function(pid){
+		var qty = Number(qtySet[pid]);
+		var t = _.find(req.session.cart, function(object){
+			return object._id == pid;
+		});
+
+		t.qty = qty;
+
+	});
 
 	req.session.cart_order = {
 		info: {
@@ -20,7 +33,8 @@ exports = module.exports = function(req, res) {
 		}, 
 		payment: {
 
-		}
+		},
+		items: req.session.cart
 	};
 
 	// if step not specified
