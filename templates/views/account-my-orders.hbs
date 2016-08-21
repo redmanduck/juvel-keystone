@@ -4,12 +4,28 @@
 			<h2>คำสั่งซื้อขอฉัน</h2>
 		</div>
 </div>
+
 <form action="/checkout" method="post">
 	<div class="container sukhumvit">
 		<div class="row">
 			<div class="col-md-3">
 				{{> account-nav section='orders' }}
 			</div>
+			{{#unless orders.length }}
+			<div class="col-md-9">
+				<div class="jumbotron">
+					<h2>No order yet</h2>
+					<p>คุณยังไม่มีรายการสั่งซื้อสินค้าจากเรา</p>
+					<p>
+						<a href="/products" class="btn btn-default btn-large">
+						Explore Catalog
+						</a>
+					</p>
+				</div>
+
+			</div>
+			{{/unless}}
+
 			<div class="col-md-9">
 				{{#each orders}}
 				<div class="panel panel-default">
