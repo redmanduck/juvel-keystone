@@ -21,6 +21,7 @@ Order.add({
     appliedDiscount: { type: Types.Number, default: 0 },
     isMarkedPaid: { type: Types.Boolean, default: false },
     isVerifiedPaid: { type: Types.Boolean, default: false },
+    isShipped: {type:Types.Boolean, defaults: false},
     tfAttachments: { type: Types.CloudinaryImages },
     paymentMethod: { type: Types.Select, options: 'bankTransfer, creditCard', default: 'bankTransfer' },
     items: { type: Types.Relationship, ref: 'OrderItem', many: true },
@@ -29,6 +30,6 @@ Order.add({
 });
 
 OrderItem.register();
-Order.defaultColumns = '_id, user, isMarkedPaid, isVerifiedPaid, paymentMethod, amount';
+Order.defaultColumns = '_id, user, isMarkedPaid, isVerifiedPaid, isShipped, paymentMethod, amount';
 
 Order.register();

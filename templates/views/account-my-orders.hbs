@@ -37,13 +37,36 @@
 				  <div class="col-md-2">
 				  	<small>ยอดสุทธิ</small><br>{{ amount }} บาท
 				  </div>
-				  <div class="col-md-2">
-				  	<small>Status</small><br>Shipped
+				  <div class="col-md-4">
+				  	<small>Status</small><br>
+					  {{#if this.isMarkedPaid}}
+					  	{{#unless this.isVerifiedPaid}}
+						  	{{#unless this.isShipped}}
+								<i class="fa fa-clock-o"></i> กำลังรอการยืนยัน
+							{{/unless}}
+						{{/unless}}
+					  {{/if}}
+					  {{#if this.isVerifiedPaid}}
+					  	{{#unless this.isShipped}}
+					  		<i class="fa fa-clock-o"></i> กำลังดำเนินการ
+						  {{/unless}}
+					  {{/if}}
+					  {{#if this.isShipped}}
+					  	<i class="fa fa-check"></i> จัดส่งแล้ว
+					  {{/if}}
 				  </div>
 				  <div class="col-md-4 pull-right align-right">
-				  	<button class="btn btn-sm btn-primary">
+					  			{{#unless this.isMarkedPaid}}
+				  				<button class="btn btn-sm btn-primary">
 					    		<i class="fa fa-circle"></i> ยกเลิกการสั่งซื้อ</button>
+								{{/unless}}
+								{{#if this.isShipped}}
+								<button class="btn btn-sm btn-default">
+					    		<i class="fa fa-question"></i> ตรวจสอบสถานะพัสดุ</button>
+								{{/if}}
+								{{#unless this.isMarkedPaid}}
 								<button class="btn btn-sm btn-attention"><i class="fa fa-send"></i> แจ้งชำระเงิน</button>
+								{{/unless}}
 				  </div>
 				  </div>
 				  </div>
@@ -56,13 +79,15 @@
 					    </div>
 					    <div class="col-md-7">
 					    	<h4><a href="#">{{product.title}}</a></h4>
-					    	จำนวน: {{quantity}}
+							{{ effectivePrice }} บาท x{{quantity}} = {{ mult quantity effectivePrice}} บาท
 							
 					    		
 					    </div>
 					    <div class="col-md-3 pull-right align-right">
-					    	<button class="btn btn-default">
-					    		<i class="fa fa-pencil"></i> Write Review</button>    	
+							{{#if ../isShipped}}
+					    	<button class="btn btn-primary">
+					    		<i class="fa fa-pencil"></i> เขียน Review</button>   
+							{{/if}} 	
 					    </div>
 				    </div>
 				  </div>
