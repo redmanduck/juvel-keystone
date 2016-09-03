@@ -28,8 +28,8 @@ exports.initLocals = function(req, res, next) {
     res.locals.accountNavLinks = [
         { label: 'คำสั่งซื้อของฉัน', key: 'orders', href: '/me/orders' },
         { label: 'ข้อมูลของฉัน', key: 'information', href: '/me/information' },
-        { label: 'ประวัติการสั่งซื้อ', key: 'history', href: '/me/history' },
-        { label: 'Wishlist', key: 'wishlist', href: '/me/wishlist' }
+        { label: 'Wishlist', key: 'wishlist', href: '/me/wishlist' },
+        { label: 'รีวิวที่ฉันเขียน', key: 'reviews', href: '/me/reviews' }
     ];
 
     res.locals.user = req.user;

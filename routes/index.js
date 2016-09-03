@@ -64,7 +64,10 @@ exports = module.exports = function (app) {
 	app.post('/me/information', routes.views.accountMyInformation.post)
 	//Product
 	app.get('/products', routes.views.products);
-	
+	//Payment Notification
+	app.get('/payment/notify/:order_id', routes.views.paymentNotify.get);
+	app.post('/payment/notify', routes.views.paymentNotify.post);
+
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

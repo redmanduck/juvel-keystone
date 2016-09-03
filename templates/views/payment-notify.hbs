@@ -1,0 +1,102 @@
+<form action="/payment/notify" method="post" enctype="multipart/form-data">
+<input type="hidden" name="orderId" value="{{order._id}}"/>
+<div class="container">
+<div class="page-header juvel-header row sukhumvit">
+			<div class="container sukhumvit">
+				<h3>แจ้งชำระเงิน</h3>
+			</div>
+		</div>
+<div class="panel panel-default">
+				  <div class="panel-heading">
+				  <div class="row">
+				  <div class="col-md-2">
+				  	<small>สั่งซื้อเมื่อวันที่</small><br> {{ date order.createdAt }}
+				  </div>
+				  <div class="col-md-2">
+				  	<small>ยอดที่คุณต้องชำระ</small><br><strong>{{ order.amount }} บาท</strong>
+				  </div>
+				  </div>
+				  </div>
+				  {{#each order.items}}
+				  <div class="panel-body">
+				    <div class="row">
+					    <div class="col-md-1">
+					   		<img src="{{product.mainImage.secure_url}}"
+							    style="width: 60px"/>
+					    </div>
+					    <div class="col-md-3">
+					    	<h4><a href="#">{{product.title}}</a></h4>
+							{{ effectivePrice }} บาท x{{quantity}} = {{ mult quantity effectivePrice}} บาท
+					    </div>
+					    <div class="col-md-3 pull-right align-right">
+							{{#unless ../isCancelled}}
+							{{#if ../isShipped}}
+					    	<button class="btn btn-primary">
+					    		<i class="fa fa-pencil"></i> เขียน Review</button>   
+							{{/if}} 	
+							{{/unless}}
+					    </div>
+				    </div>
+				  </div>
+				  {{/each}}
+
+</div>
+
+
+<p class="help-block">1. กรุณาโอนเงินไปยังหนึ่งในบัญชีธนาคารต่อไปนี้</p>
+<div class="row">  
+    <div class="col-md-5">
+       
+        <div class="media">
+            <div class="media-left">
+                 <img src="https://thanatiptrading.files.wordpress.com/2010/10/logo_scb.gif?w=50&h=50">
+            </div>
+            <div class="media-body">
+                <strong class="media-heading">ธนาคารไทยพานิชย์</strong>
+                <p>401-1203-120301-1230</p>
+            </div>
+       </div>
+
+    </div>
+</div>
+<hr/>
+<div class="row">
+    <div class="col-md-5">
+        <p class="help-block">2. กรุณาอัพโหลดรูปถ่ายสลิปการโอนเงินโดย ATM หรือระบบ Internet Banking</p>
+          <div class="form-group">
+            <label for="exampleInputEmail1">หลักฐานการโอนเงิน</label>
+            <input type="file" name="file" id="imgInp">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-5">
+    <button class="btn btn-attention"><i class="fa fa-check"></i> เสร็จสิ้นการแจ้งโอนเงิน</button>
+    </div>
+</div>
+
+
+</div>
+</form>
+
+
+
+<script>
+function readURL(input) {
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#imgPrv').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#imgInp").change(function(){
+    readURL(this);
+});
+
+</script>

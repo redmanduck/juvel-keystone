@@ -8,7 +8,7 @@ exports = module.exports = function(req, res) {
     var q = keystone.list('Order').model.find({
             user: req.user
         })
-        .populate('items')
+        .populate('items shippingMethod')
         .sort('-createdAt')
         .exec(function(err, results) {
             keystone.list('Product').model.populate(results, 'items.product', function(err, p) {

@@ -23,10 +23,10 @@ exports = module.exports = function(req, res) {
             var totalCost = pObject.items.reduce(function(prev, curr) {
                 return prev + curr.basePrice * curr.qty
             }, shippingMethod.fixedFeeAmount);
-
             var newOrder = new Order.model({
                 isMarkedPaid: false,
                 isVerifiedPaid: false,
+                shippingMethod: shippingMethod,
                 paymentMethod: pObject.payment.paymentMethod,
                 items: pObject.items.map(function(product) {
                     var j = new OrderItem.model({
@@ -44,9 +44,9 @@ exports = module.exports = function(req, res) {
 
             newOrder.save(function(err) {
                 if (err) {
-                    res.send(err);
+                   return res.send(err);
                 }
-                return res.send(newOrder);
+                return res.redirect('/me/orders');
             });
 
         });
