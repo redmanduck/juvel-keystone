@@ -28,44 +28,42 @@ keystone.pre('render', middleware.flashMessages);
 
 // Import Route Controllers
 var routes = {
-	views: importRoutes('./views'),
-	api: importRoutes('./api')
+	views: importRoutes('./views')
 };
 var restful = require('restful-keystone')(keystone);
 // Setup Route Bindings
 exports = module.exports = function (app) {
-	//api
-	// app.post('/auth', routes.api.auth.post);
-	// app.post('/api/cart', routes.api.cart.post);
-	// app.get('/api/cart', routes.api.cart.get);
-
-	restful.expose({
-		Post : true,
-		Product: true,
-		User: true,
-		ProductCollection: true,
-		ProductReview: true
-	}).start();
+	// restful.expose({
+	// 	Post : true,
+	// 	Product: true,
+	// 	User: true,
+	// 	ProductCollection: true,
+	// 	ProductReview: true
+	// }).start();
 	
-	// Views
+	//Top
 	app.get('/', routes.views.index);
+	//Blog
 	app.get('/blog/:category?', routes.views.blog);
 	app.get('/blog/post/:post', routes.views.post);
-	app.get('/gallery', routes.views.gallery);
-	app.all('/contact', routes.views.contact);
+	//Cart
 	app.get('/cart', routes.views.cart.get);
 	app.post('/cart', routes.views.cart.post);
-	app.all('/checkout/', routes.views.checkout)
-	app.post('/checkout/next', routes.views.checkoutNext)
-	app.get('/checkout/:name', routes.views.checkoutView)
-	app.get('/chlogin', routes.views.checkoutLogin)
-	app.get('/login', routes.views.login)
-	app.post('/login', keystone.security.csrf.middleware.validate, routes.views.login)
-	app.get('/products', routes.views.products)
-
-	app.get('/me', routes.views.accountMy)
-	app.get('/me/orders', routes.views.accountMyOrders)
-	app.get('/me/information', routes.views.accountMyInformation)
+	//Checkout
+	app.all('/checkout/', routes.views.checkout);
+	app.post('/checkout/next', routes.views.checkoutNext);
+	app.get('/checkout/:name', routes.views.checkoutView);
+	//User management
+	app.get('/chlogin', routes.views.checkoutLogin);
+	app.get('/login', routes.views.login.get);
+	app.post('/login', keystone.security.csrf.middleware.validate, routes.views.login.post);
+	app.get('/me', routes.views.accountMy);
+	app.get('/me/orders', routes.views.accountMyOrders);
+	app.get('/me/information', routes.views.accountMyInformation.get);
+	app.get('/me/information', routes.views.accountMyInformation.post)
+	//Product
+	app.get('/products', routes.views.products);
+	
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
