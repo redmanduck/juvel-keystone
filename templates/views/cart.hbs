@@ -1,12 +1,13 @@
-<form action="/checkout" method="post">
-		<div class="page-header juvel-header row sukhumvit">
-			<div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+<div class="container">
+<div class="page-header juvel-header row sukhumvit">
+			<div class="container sukhumvit">
 				<h3><i class="fa fa-shopping-bag" aria-hidden="true"></i> &nbsp; Shopping Bag</h3>
 			</div>
 		</div>
-
+	<form action="/checkout" method="post">
+		
 		<div class="row sukhumvit">
-			<div class="col-md-8 col-md-offset-2 col-sm-12">
+			<div class="col-md-10 col-md-offset-1">
 				{{#unless cart}}
 				<div class="container">
 					<p>คุณยังไม่ได้ใส่สินค้าเข้าตะกร้า</p>
@@ -42,13 +43,13 @@
 		</div>
 		{{#if cart}}
 		<div class="row">
-			<div class="col-md-8 col-md-offset-2 col-sm-12">
+			<div class="col-md-10 col-md-offset-1">
 				<br/>
 			</div>
 		</div>
 		<div class="row">
 
-			<div class="col-md-8 col-md-offset-2 align-right">
+			<div class="col-md-10 col-md-offset-1 align-right">
 				
 
 				<a href="/products" class="btn btn-default sukhumvit">Continue Shopping</a>

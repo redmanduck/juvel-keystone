@@ -10,11 +10,11 @@
 	  <!-- Wrapper for slides -->
 	  <div class="carousel-inner" role="listbox">
 	  	{{#each gallery }}
-	    <div class="item {{#if @first}}active{{/if}}" style="background-image:url({{image.secure_url}}); background-position: top center; background-repeat: no-repeat; height:500px">
+	    <div class="item  {{#if @first}}active{{/if}}" style="background-image:url({{image.secure_url}}); background-position: top center; background-repeat: no-repeat; height:500px">
 	      <div class="carousel-caption" style="margin-bottom: 150px">
-	        <h1>{{title}}</br><small>{{description}}</small></h1><br/>
+	        <h1 class="sukhumvit">{{title}}</br><small>{{description}}</small></h1><br/>
 					{{#if showButton }}
-	        <button class="btn btn-primary">{{buttonText}}</button>
+	        <button class="btn sukhumvit btn-primary">{{buttonText}}</button>
 					{{/if}}
 	      </div>
 	    </div>

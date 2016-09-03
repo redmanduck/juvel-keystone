@@ -43,6 +43,7 @@ exports = module.exports = function (app) {
 	
 	//Top
 	app.get('/', routes.views.index);
+	app.get('/about', routes.views.about);
 	//Blog
 	app.get('/blog/:category?', routes.views.blog);
 	app.get('/blog/post/:post', routes.views.post);
@@ -60,7 +61,7 @@ exports = module.exports = function (app) {
 	app.get('/me', routes.views.accountMy);
 	app.get('/me/orders', routes.views.accountMyOrders);
 	app.get('/me/information', routes.views.accountMyInformation.get);
-	app.get('/me/information', routes.views.accountMyInformation.post)
+	app.post('/me/information', routes.views.accountMyInformation.post)
 	//Product
 	app.get('/products', routes.views.products);
 	
