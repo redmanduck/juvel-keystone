@@ -21,6 +21,8 @@
 var keystone = require('keystone');
 var middleware = require('./middleware');
 var importRoutes = keystone.importer(__dirname);
+var multer  = require('multer')
+var upload = multer({ dest: '/public/slips' })
 
 // Common Middleware
 keystone.pre('routes', middleware.initLocals);
@@ -66,7 +68,7 @@ exports = module.exports = function (app) {
 	app.get('/products', routes.views.products);
 	//Payment Notification
 	app.get('/payment/notify/:order_id', routes.views.paymentNotify.get);
-	app.post('/payment/notify', routes.views.paymentNotify.post);
+	app.post('/payment/notify/:order_id', upload.single('file'), routes.views.paymentNotify.post);
 
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:

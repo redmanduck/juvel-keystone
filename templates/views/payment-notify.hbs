@@ -1,5 +1,4 @@
-<form action="/payment/notify" method="post" enctype="multipart/form-data">
-<input type="hidden" name="orderId" value="{{order._id}}"/>
+<form action="/payment/notify/{{order._id}}" method="post" enctype="multipart/form-data">
 <div class="container">
 <div class="page-header juvel-header row sukhumvit">
 			<div class="container sukhumvit">
@@ -45,8 +44,7 @@
 
 <p class="help-block">1. กรุณาโอนเงินไปยังหนึ่งในบัญชีธนาคารต่อไปนี้</p>
 <div class="row">  
-    <div class="col-md-5">
-       
+    <div class="col-md-3">
         <div class="media">
             <div class="media-left">
                  <img src="https://thanatiptrading.files.wordpress.com/2010/10/logo_scb.gif?w=50&h=50">
@@ -56,7 +54,39 @@
                 <p>401-1203-120301-1230</p>
             </div>
        </div>
-
+    </div>
+	<div class="col-md-3">
+        <div class="media">
+            <div class="media-left">
+                 <img src="https://thanatiptrading.files.wordpress.com/2010/10/logo_scb.gif?w=50&h=50">
+            </div>
+            <div class="media-body">
+                <strong class="media-heading">ธนาคารไทยพานิชย์</strong>
+                <p>401-1203-120301-1230</p>
+            </div>
+       </div>
+    </div>
+	<div class="col-md-3">
+        <div class="media">
+            <div class="media-left">
+                 <img src="https://thanatiptrading.files.wordpress.com/2010/10/logo_scb.gif?w=50&h=50">
+            </div>
+            <div class="media-body">
+                <strong class="media-heading">ธนาคารไทยพานิชย์</strong>
+                <p>401-1203-120301-1230</p>
+            </div>
+       </div>
+    </div>
+	<div class="col-md-3">
+        <div class="media">
+            <div class="media-left">
+                 <img src="https://thanatiptrading.files.wordpress.com/2010/10/logo_scb.gif?w=50&h=50">
+            </div>
+            <div class="media-body">
+                <strong class="media-heading">ธนาคารไทยพานิชย์</strong>
+                <p>401-1203-120301-1230</p>
+            </div>
+       </div>
     </div>
 </div>
 <hr/>

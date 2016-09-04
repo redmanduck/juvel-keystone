@@ -11,6 +11,7 @@
     "keystone": "^0.3.19",
     "lodash": "^4.13.1",
     "moment": "^2.10.6",
+    "multer": "^1.2.0",
     "pg": "^6.0.1",
     "pg-hstore": "^2.3.2",
     "restful-keystone": "^0.3.0",
