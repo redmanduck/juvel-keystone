@@ -13,6 +13,7 @@ exports = module.exports = {
         });
 
         q.exec(function (err, result) {
+            result.isMarkedPaid = true;
             result.tfAttachments = {
                 filename: file.name,
                 originalname: 'file',

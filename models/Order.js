@@ -18,16 +18,17 @@ OrderItem.add({
 });
 
 Order.add({
-    appliedDiscount: { type: Types.Number, default: 0 },
     isMarkedPaid: { type: Types.Boolean, default: false },
     isVerifiedPaid: { type: Types.Boolean, default: false },
     isShipped: {type:Types.Boolean, defaults: false},
+    trackingNumber: {type: String },
     isCancelled: { type: Types.Boolean, defaults: false},
-    tfAttachments: { type: Types.LocalFile, dest: '/public/slips'  },
+    tfAttachments: { type: Types.CloudinaryImage  },
     shippingMethod: { type: Types.Relationship, ref: 'ShippingMethod'},
     paymentMethod: { type: Types.Select, options: 'bankTransfer, creditCard', default: 'bankTransfer' },
     items: { type: Types.Relationship, ref: 'OrderItem', many: true },
     user: { type: Types.Relationship, ref: 'User', index: true },
+    appliedDiscount: { type: Types.Number, default: 0 },
     amount: { type: Types.Money, default: 999999, required: true, currency: 'th' }
 });
 
