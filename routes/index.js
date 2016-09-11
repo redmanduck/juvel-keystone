@@ -54,22 +54,20 @@ exports = module.exports = function (app) {
 	app.post('/cart', routes.views.cart.post);
 	//Checkout
 	app.all('/checkout/', routes.views.checkout);
-	app.post('/checkout/next', routes.views.checkoutNext);
-	app.get('/checkout/:name', routes.views.checkoutView);
+	app.post('/checkout/next', routes.views['checkout-next']);
+	app.get('/checkout/:name', routes.views['checkout-view']);
 	//User management
-	app.get('/chlogin', routes.views.checkoutLogin);
 	app.get('/login', routes.views.login.get);
 	app.post('/login', keystone.security.csrf.middleware.validate, routes.views.login.post);
-	app.get('/me', routes.views.accountMy);
-	app.get('/me/orders', routes.views.accountMyOrders);
-	app.get('/me/information', routes.views.accountMyInformation.get);
-	app.post('/me/information', routes.views.accountMyInformation.post)
+	app.get('/me', routes.views['account-my']);
+	app.get('/me/orders', routes.views['account-my-orders']);
+	app.get('/me/information', routes.views['account-my-information'].get);
+	app.post('/me/information', routes.views['account-my-information'].post)
 	//Product
 	app.get('/products', routes.views.products);
 	//Payment Notification
-	app.get('/payment/notify/:order_id', routes.views.paymentNotify.get);
-	app.post('/payment/notify/:order_id', upload.single('file'), routes.views.paymentNotify.post);
-
+	app.get('/payment/notify/:order_id', routes.views['payment-notify'].get);
+	app.post('/payment/notify/:order_id', upload.single('file'), routes.views['payment-notify'].post);
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

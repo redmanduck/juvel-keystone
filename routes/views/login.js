@@ -18,6 +18,10 @@ exports = module.exports = {
 
 	},
 	get: function (req, res) {
-		res.render("checkout-pre")
+		var nextPath = '';
+		if(req.next){
+			nextPath = req.next;
+		}
+		res.render("login", { next: nextPath })
 	}
 };
