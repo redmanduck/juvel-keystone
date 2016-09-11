@@ -5,8 +5,8 @@ exports = module.exports = {
 	get: function(req, res) {
 
 		var view = new keystone.View(req, res);
-
-		keystone.list('StoreProfile').model.findOne({
+		var StoreProfile = keystone.list('StoreProfile').model;
+		StoreProfile.findOne({
 			dataName: "aboutBrand"
 		}).exec(function(err, result) {
 			view.render('about', {
