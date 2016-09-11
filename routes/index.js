@@ -42,10 +42,10 @@ exports = module.exports = function (app) {
 	// 	ProductCollection: true,
 	// 	ProductReview: true
 	// }).start();
-	
+
 	//Top
 	app.get('/', routes.views.index);
-	app.get('/about', routes.views.about);
+	app.get('/about', routes.views.about.get);
 	//Blog
 	app.get('/blog/:category?', routes.views.blog);
 	app.get('/blog/post/:post', routes.views.post);

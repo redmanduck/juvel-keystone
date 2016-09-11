@@ -1,78 +1,80 @@
 <form method="POST" action="/checkout/next">
-	<div class="container">
-		<input type="hidden" name="_next" value="payment"/>
-		<ol class="breadcrumb sukhumvit">
-			<li>ตะกร้า</li>
-			<li>ข้อมูลผู้รับ</li>
-			<li class="active">วิธีจัดส่ง</li>
-			<li>ช่องทางการชำระเงิน</li>
-		</ol>
-		<div class="row">
-			<div class="col-md-5 col-sm-6">
-				
-				<div class="list-group">
-					{{#each _shippingMethod}}
-					
-				  	<label class="list-group-item" style="font-weight:normal">
-						
-						<strong>{{ title }} <br/></strong>
-						<span >{{ description }}</span>
+    <input type="hidden" name="{{csrfTokenKey}}" value="{{csrfTokenValue}}" />
+    <div class="container">
+        <input type="hidden" name="_next" value="payment" />
+        <ol class="breadcrumb sukhumvit">
+            <li>ตะกร้า</li>
+            <li>ข้อมูลผู้รับ</li>
+            <li class="active">วิธีจัดส่ง</li>
+            <li>ช่องทางการชำระเงิน</li>
+        </ol>
+        <div class="row">
+            <div class="col-md-5 col-sm-6">
 
-						<p>
-						<span data-fee="{{ fixedFeeAmount }}" data-shipping-id="{{_id}}" class="fixedFeeAmount">{{ fixedFeeAmount }}</span> 
-						บาท 
-						
-						<input type="radio" name="shipping[_id]" value="{{_id}}" class="shipping_mode_radio"> 
-						</p>
-						
-				  	</label>
-					{{/each}}
+                <div class="list-group">
+                    {{#each _shippingMethod}}
 
-				</div>
-			</div>
+                        <label class="list-group-item" style="font-weight:normal">
 
+                            <strong>{{ title }} <br/></strong>
+                            <span>{{ description }}</span>
 
-			<div class="col-md-4 col-sm-6 align-right pull-right">
-				{{> promo-code }}
-				{{> cost-table }}
-			</div>
+                            <p>
+                                <span data-fee="{{ fixedFeeAmount }}" data-shipping-id="{{_id}}" class="fixedFeeAmount">{{ fixedFeeAmount }}</span>
+                                บาท
+
+                                <input type="radio" name="shipping[_id]" value="{{_id}}" class="shipping_mode_radio">
+                            </p>
+
+                        </label>
+                    {{/each}}
+
+                </div>
+            </div>
 
 
-		</div>
-		<div class="row">
-			<div class="col-md-3 col-sm-4 col-xs-12 align-right pull-right">
-				<a href="/checkout/information" class="btn btn-default sukhumvit">กลับไปแก้ไข</a>
-				<button type="submit" href="#" class="btn btn-primary sukhumvit">ถัดไป</button>
-			</div>
-		</div>
-	</div>
-	
+            <div class="col-md-4 col-sm-6 align-right pull-right">
+                {{> promo-code }} {{> cost-table }}
+            </div>
+
+
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-4 col-xs-12 align-right pull-right">
+                <a href="/checkout/information" class="btn btn-default sukhumvit">กลับไปแก้ไข</a>
+                <button type="submit" href="#" class="btn btn-primary sukhumvit">ถัดไป</button>
+            </div>
+        </div>
+    </div>
+
 </form>
 <script>
-	var selId = '{{ cart_order.shipping._id }}';
-	function digest(){
-		$('.list-group-item').removeClass('active');
-		$('.list-group-item:has(input:checked)').addClass('active');
+function digest() {
+    $('.list-group-item').removeClass('active');
+    $('.list-group-item:has(input:checked)').addClass('active');
 
-		var selectedShippingId = $( "[type=radio]:checked" ).attr("value");
-		var selectedFee = Number($(".fixedFeeAmount[data-shipping-id=" + selectedShippingId +  "]").attr("data-fee"));
-		$(".calc-shipping").text(selectedFee);
-		$(".calc-shipping-fee").val(selectedFee);
+    var selectedShippingId = $("[type=radio]:checked").attr("value");
+    var selectedFee = Number($(".fixedFeeAmount[data-shipping-id=" +
+        selectedShippingId + "]").attr("data-fee"));
+    $(".calc-shipping").text(selectedFee);
+    $(".calc-shipping-fee").val(selectedFee);
 
-		var feeSum = 0;
-		$('.fee-entry').each(function(){
-			feeSum += Number($(this).val());
-		});
-		
-		$(".value-subtotal").text(feeSum);
-	}
+    var feeSum = 0;
+    $('.fee-entry').each(function() {
+        feeSum += Number($(this).val());
+    });
 
-	if(selId.length > 0){
-		$( "[type=radio][value=" + selId + "]" ).prop("checked", true);
-		digest();
-	}
+    $(".value-subtotal").text(feeSum);
+}
 
-	$(".shipping_mode_radio").change(function(){
-		digest();
-	});
+$(document).ready(function() {
+    var selId = '{{ cart_order.shipping._id }}';
+    if (selId.length > 0) {
+        $("[type=radio][value=" + selId + "]").prop("checked", true);
+        digest();
+    }
+    $(".shipping_mode_radio").change(function() {
+        digest();
+    });
+});
 </script>

@@ -1,70 +1,71 @@
 <form method="POST" action="/checkout/next">
-	<div class="container">
-		<input type="hidden" name="_next" value="done"/>
-		<ol class="breadcrumb sukhumvit">
-			<li>ตะกร้า</li>
-			<li>ข้อมูลผู้รับ</li>
-			<li>วิธีจัดส่ง</li>
-			<li class="active">ช่องทางการชำระเงิน</li>
-		</ol>
-		<div class="row">
-			<div class="col-md-5 col-sm-6">
-				<div class="list-group">
-					<label class="list-group-item" style="font-weight:normal">
-						
-						<strong>Bank Transfer<br/></strong>
-						<span >โอนเงินผ่านธนาคาร แล้วอัพโหลด Slip</span>
-						<input type="radio" name="payment[paymentMethod]" value="bankTransfer" class="payment_mode_radio"> 
+    <input type="hidden" name="{{csrfTokenKey}}" value="{{csrfTokenValue}}" />
 
-				  </label>
-					<label class="list-group-item" style="font-weight:normal">
-						
-						<strong>Credit Card<br/></strong>
-						<span >บัตรเครดิต VISA หรือ Mastercard</span>
-						<input type="radio" name="payment[paymentMethod]" value="creditCard" class="payment_mode_radio"> 
+    <div class="container">
+        <input type="hidden" name="_next" value="done" />
+        <ol class="breadcrumb sukhumvit">
+            <li>ตะกร้า</li>
+            <li>ข้อมูลผู้รับ</li>
+            <li>วิธีจัดส่ง</li>
+            <li class="active">ช่องทางการชำระเงิน</li>
+        </ol>
+        <div class="row">
+            <div class="col-md-5 col-sm-6">
+                <div class="list-group">
+                    <label class="list-group-item" style="font-weight:normal">
 
-				  </label>
-				</div>
-			</div>
-			<div class="col-md-4 col-sm-6 align-right pull-right">
-				{{> promo-code }}
-				{{> cost-table }}
-			</div>
+                        <strong>Bank Transfer<br/></strong>
+                        <span>โอนเงินผ่านธนาคาร แล้วอัพโหลด Slip</span>
+                        <input type="radio" name="payment[paymentMethod]" value="bankTransfer" class="payment_mode_radio">
 
-		</div>
-		<div class="row">
-			<div class="col-md-3 col-sm-4 col-xs-12 align-right pull-right">
-				<a href="/checkout/shipping" class="btn btn-default sukhumvit">กลับไปแก้ไข</a>
-				<button type="submit" href="#" class="btn btn-primary sukhumvit">ถัดไป</button>
-			</div>
-		</div>
-	</div>
+                    </label>
+                    <label class="list-group-item" style="font-weight:normal">
+
+                        <strong>Credit Card<br/></strong>
+                        <span>บัตรเครดิต VISA หรือ Mastercard</span>
+                        <input type="radio" name="payment[paymentMethod]" value="creditCard" class="payment_mode_radio">
+
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 align-right pull-right">
+                {{> promo-code }} {{> cost-table }}
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-4 col-xs-12 align-right pull-right">
+                <a href="/checkout/shipping" class="btn btn-default sukhumvit">กลับไปแก้ไข</a>
+                <button type="submit" href="#" class="btn btn-primary sukhumvit">ถัดไป</button>
+            </div>
+        </div>
+    </div>
 </form>
 
 <script>
-	var selId = '{{ cart_order.payment.paymentMethod }}';
-	function digest(){
-		$('.list-group-item').removeClass('active');
-		$('.list-group-item:has(input:checked)').addClass('active');
+var selId = '{{ cart_order.payment.paymentMethod }}';
 
-		var selectedId = $( "[type=radio]:checked" ).attr("value");
+function digest() {
+    $('.list-group-item').removeClass('active');
+    $('.list-group-item:has(input:checked)').addClass('active');
 
-		var feeSum = 0;
-		$('.fee-entry').each(function(){
-			feeSum += Number($(this).val());
-		});
-		$(".value-subtotal").text(feeSum);
-	}
+    var selectedId = $("[type=radio]:checked").attr("value");
 
-	if(selId.length > 0){
-		$( "[type=radio][value=" + selId + "]" ).prop("checked", true);
-		digest();
-	}
+    var feeSum = 0;
+    $('.fee-entry').each(function() {
+        feeSum += Number($(this).val());
+    });
+    $(".value-subtotal").text(feeSum);
+}
 
-	$(".payment_mode_radio").change(function(){
-		digest();
-	});
+if (selId.length > 0) {
+    $("[type=radio][value=" + selId + "]").prop("checked", true);
+    digest();
+}
 
-	digest();
-	
+$(".payment_mode_radio").change(function() {
+    digest();
+});
+
+digest();
 </script>

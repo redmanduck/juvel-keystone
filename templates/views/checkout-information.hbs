@@ -1,51 +1,77 @@
 <form method="POST" action="/checkout/next">
-	<div class="container">
-		<input type="hidden" name="_next" value="shipping"/>
-		<ol class="breadcrumb sukhumvit">
-			<li>ตะกร้า</li>
-			<li class="active">ข้อมูลผู้รับ</li>
-			<li>วิธีจัดส่ง</li>
-			<li>ช่องทางการชำระเงิน</li>
-		</ol>
-		<div class="row">
-			<div class="col-md-5 col-sm-6">
-				<div class="form-group col-md-6  sukhumvit">
-					<label for="name">ชื่อ</label>
-					<input type="text" class="form-control" name="info[name][first]" value="{{ cart_order.info.name.first }}" placeholder="Your Name">
-				</div>
-				<div class="form-group col-md-6 sukhumvit">
-					<label for="name">นามกสุล</label>
-					<input type="text" class="form-control" name="info[name][last]" value="{{ cart_order.info.name.last }}" placeholder="Your Name">
-				</div>
-				<div class="form-group  col-md-12 sukhumvit">
-					<label for="name">Email</label>
-					<input type="email" class="form-control" name="info[email]" readonly value="{{ cart_order.info.email }}" placeholder="" size="5"/>
-				</div>
-				<div class="form-group col-md-12 sukhumvit">
-					<label for="name">Mobile Phone</label>
-					<input type="text" class="form-control" name="info[phone]" placeholder="Contact Number" value="{{ cart_order.info.phone }}" placeholder="" size="5"/>
-				</div>
-				<div class="form-group col-md-12 sukhumvit">
-					<label for="name">ที่อยู่</label>
-					<input type="text" class="form-control" name="info[address][street1]" value="{{ cart_order.info.address.street1 }}"  placeholder="บ้านเลขที่ หมู่บ้าน"/>
-					<input type="text" class="form-control" name="info[address][street2]" value="{{ cart_order.info.address.street2 }}"   placeholder="ซอย ถนน" style="margin-top:5px"/>
-					<input type="text" class="form-control" name="info[address][suburb]" value="{{ cart_order.info.address.suburb }}"   placeholder="ตำบล / เขต " style="margin-top:5px"/>
-					<input type="text" class="form-control" name="info[address][state]" value="{{ cart_order.info.address.state }}"  value="กรุงเทพ / Bangkok" style="margin-top:5px"/>
-					<input type="text" class="form-control" name="info[address][postcode]"  value="{{ cart_order.info.address.postcode }}"  placeholder="รหัสไปรษณีย์" size="5" style="margin-top:5px"/>
-				</div>
-			</div>
-			<div class="col-md-4 col-sm-6 align-right pull-right">
-				{{> promo-code }}
-				{{> cost-table }}
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-3 col-sm-4 col-xs-12 align-right pull-right">
-				<a href="/cart" class="btn btn-default sukhumvit">กลับไปแก้ไข</a>
-				<button type="submit" href="#" class="btn btn-primary sukhumvit">ถัดไป</button>
-			</div>
-		</div>
-	</div>
+    <input type="hidden" name="{{csrfTokenKey}}" value="{{csrfTokenValue}}" />
+
+    <div class="container">
+        <input type="hidden" name="_next" value="shipping" />
+        <ol class="breadcrumb sukhumvit">
+            <li>ตะกร้า</li>
+            <li class="active">ข้อมูลผู้รับ</li>
+            <li>วิธีจัดส่ง</li>
+            <li>ช่องทางการชำระเงิน</li>
+        </ol>
+        <div class="row">
+            <div class="col-md-5 col-sm-6">
+                <div class="form-group col-md-6  sukhumvit">
+                    <label for="name">ชื่อ</label>
+                    <input type="text" class="form-control" name="info[name][first]" value="{{ cart_order.info.name.first }}"
+                        placeholder="Your Name">
+                </div>
+                <div class="form-group col-md-6 sukhumvit">
+                    <label for="name">นามกสุล</label>
+                    <input type="text" class="form-control" name="info[name][last]" value="{{ cart_order.info.name.last }}"
+                        placeholder="Your Name">
+                </div>
+                <div class="form-group  col-md-12 sukhumvit">
+                    <label for="name">Email</label>
+                    <input type="email" class="form-control" name="info[email]" readonly value="{{ cart_order.info.email }}"
+                        placeholder="" size="5" />
+                </div>
+                <div class="form-group col-md-12 sukhumvit">
+                    <label for="name">Mobile Phone</label>
+                    <input type="text" class="form-control" name="info[phone]" placeholder="Contact Number"
+                        value="{{ cart_order.info.phone }}" placeholder="" size="5" />
+                </div>
+                <div class="form-group col-md-12 sukhumvit">
+                    <label for="name">ที่อยู่</label>
+                    <input type="text" class="form-control" name="info[address][street1]" value="{{ cart_order.info.address.street1 }}"
+                        placeholder="บ้านเลขที่ หมู่บ้าน" />
+                    <input type="text" class="form-control" name="info[address][street2]" value="{{ cart_order.info.address.street2 }}"
+                        placeholder="ซอย ถนน" style="margin-top:5px" />
+                    <input type="text" class="form-control" name="info[address][suburb]" value="{{ cart_order.info.address.suburb }}"
+                        placeholder="ตำบล / เขต " style="margin-top:5px" />
+                    <input type="text" class="form-control" name="info[address][state]" value="{{ cart_order.info.address.state }}"
+                        value="กรุงเทพ / Bangkok" style="margin-top:5px" />
+                    <input type="text" class="form-control" name="info[address][postcode]" value="{{ cart_order.info.address.postcode }}"
+                        placeholder="รหัสไปรษณีย์" size="5" style="margin-top:5px" />
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 align-right pull-right">
+                {{> promo-code }} {{> cost-table }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-4 col-xs-12 align-right pull-right">
+                <a href="/cart" class="btn btn-default sukhumvit">กลับไปแก้ไข</a>
+                <button type="submit" href="#" class="btn btn-primary sukhumvit">ถัดไป</button>
+            </div>
+        </div>
+    </div>
 </form>
 
-{{ > js-digest-loop }}
+<script>
+$(".section_shipping_fee").hide();
+//TODO: move this code to checkout.js
+function digest() {
+
+    var feeSum = 0;
+    $('.fee-entry').each(function() {
+        feeSum += Number($(this).val());
+    });
+
+    $(".value-subtotal").text(feeSum);
+}
+
+$(document).ready(function() {
+    digest();
+});
+</script>
