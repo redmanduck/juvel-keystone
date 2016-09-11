@@ -1,0 +1,15 @@
+<script>
+	function digest(){
+
+		var feeSum = 0;
+		$('.fee-entry').each(function(){
+			feeSum += Number($(this).val());
+		});
+		
+		$(".value-subtotal").text(feeSum);
+		
+		$(".section_shipping_fee").hide();
+	}
+	
+	digest();
+</script>

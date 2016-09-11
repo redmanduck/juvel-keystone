@@ -8,10 +8,10 @@ exports = module.exports = function (req, res) {
 	keystone.list('StoreProfile').model.findOne({
 		dataName: "aboutBrand"
 	}).exec(function (err, result) {
-		view.render('contact', {
+		view.render('about', {
 			aboutBrand: result
 		});
 	});
 
-	
+
 };
