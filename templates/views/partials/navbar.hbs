@@ -38,10 +38,10 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
                         {{# each navLinks}}
-                            <li {{#ifeq ../section key}} class="active" {{else}} {{/ifeq}}>
+                            <li>
                                 <a href="{{ href }}">{{ label }}</a>
                             </li>
-                            {{/each}}
+                         {{/each}}
                     </ul>
                 </div>
             </div>

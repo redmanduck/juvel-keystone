@@ -6,8 +6,9 @@ exports = module.exports = {
 		var view = new keystone.View(req, res);
 		var locals = res.locals;
 
-		if (!req.body.email || !req.body.password)
+		if (!req.body.email || !req.body.password){
 			throw "Invalid Username or Password";
+		}
 
 		keystone.session.signin({ email: req.body.email, password: req.body.password }, req, res, function (user) {
 			res.redirect("/" + req.body._next);
@@ -15,13 +16,19 @@ exports = module.exports = {
 			throw err;
 		});
 
-
 	},
 	get: function (req, res) {
+		var csrfTokenKey = keystone.security.csrf.TOKEN_KEY;
+		var csrfTokenValue = keystone.security.csrf.getToken(req, res);
+
 		var nextPath = '';
-		if(req.next){
+		if (req.next) {
 			nextPath = req.next;
 		}
-		res.render("login", { next: nextPath })
+		res.render("login", {
+			next: nextPath, 
+			csrfTokenKey: csrfTokenKey,
+			csrfTokenValue: csrfTokenValue
+		})
 	}
 };

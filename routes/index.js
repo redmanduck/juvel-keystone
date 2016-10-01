@@ -57,7 +57,7 @@ exports = module.exports = function (app) {
 	app.post('/checkout/next', routes.views['checkout-next']);
 	app.get('/checkout/:name', routes.views['checkout-view']);
 	//User management
-	app.get('/login', routes.views.login.get);
+	app.get('/login', keystone.security.csrf.middleware.init, routes.views.login.get);
 	app.post('/login', keystone.security.csrf.middleware.validate, routes.views.login.post);
 	app.get('/me', routes.views['account-my']);
 	app.get('/me/orders', routes.views['account-my-orders']);
