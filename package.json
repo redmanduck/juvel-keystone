@@ -1,6 +1,6 @@
 {
   "name": "juvel-skincare",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "dependencies": {
     "async": "^1.5.0",
@@ -15,7 +15,8 @@
     "pg": "^6.0.1",
     "pg-hstore": "^2.3.2",
     "restful-keystone": "^0.3.0",
-    "sequelize": "^3.23.4"
+    "sequelize": "^3.23.4",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "eslint": "^2.12.0",

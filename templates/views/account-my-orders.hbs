@@ -36,7 +36,7 @@
 				  <div class="col-md-2">
 				  	<small>ยอดสุทธิ</small><br>{{ amount }} บาท
 				  </div>
-				  <div class="col-md-4">
+				  <div class="col-md-3">
 				  	<small>Status</small><br>
 					  
 					  {{#unless this.isCancelled}}
@@ -48,15 +48,15 @@
 							{{/unless}}
 						{{/if}}
 						{{#unless this.isMarkedPaid}}
-							<i class="fa fa-clock-o"></i> รอชำระเงิน (Pending Payment)
+							<i class="fa fa-clock-o"></i> รอชำระเงิน 
 						{{/unless}}
 						{{#if this.isVerifiedPaid}}
 							{{#unless this.isShipped}}
-								<i class="fa fa-clock-o"></i> กำลังดำเนินการ (Processing)
+								<i class="fa fa-clock-o"></i> กำลังดำเนินการ 
 							{{/unless}}
 						{{/if}}
 						{{#if this.isShipped}}
-							<i class="fa fa-check"></i> จัดส่งแล้ว (Shipped)
+							<i class="fa fa-check"></i> จัดส่งแล้ว 
 						{{/if}}
 					{{/unless}}
 					{{#if this.isCancelled}}
@@ -65,7 +65,7 @@
 
 
 				  </div>
-				  <div class="col-md-4 pull-right align-right">
+				  <div class="col-md-5 pull-right align-right">
 					  	{{#unless this.isCancelled}}
 						  {{#unless this.isMarkedPaid}}
 				  				<button class="btn btn-sm btn-primary">

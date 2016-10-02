@@ -22,9 +22,10 @@ exports = module.exports = {
 		var csrfTokenValue = keystone.security.csrf.getToken(req, res);
 
 		var nextPath = '';
-		if (req.next) {
-			nextPath = req.next;
+		if ('next' in req.params) {
+			nextPath = req.params.next;
 		}
+
 		res.render("login", {
 			next: nextPath, 
 			csrfTokenKey: csrfTokenKey,

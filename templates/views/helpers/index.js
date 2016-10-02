@@ -62,7 +62,7 @@ module.exports = function() {
         // ensure that context is undefined, not null, as that can cause errors
         context = context === null ? undefined : context;
 
-        var f = options.hash.format || 'MMM Do, YYYY';
+        var f = options.hash.format || 'DD/MM/YY';
         var timeago = options.hash.timeago;
         var date;
 

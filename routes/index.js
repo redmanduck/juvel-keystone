@@ -35,13 +35,6 @@ var routes = {
 var restful = require('restful-keystone')(keystone);
 // Setup Route Bindings
 exports = module.exports = function (app) {
-	// restful.expose({
-	// 	Post : true,
-	// 	Product: true,
-	// 	User: true,
-	// 	ProductCollection: true,
-	// 	ProductReview: true
-	// }).start();
 
 	//Top
 	app.get('/', routes.views.index);
@@ -68,6 +61,7 @@ exports = module.exports = function (app) {
 	//Payment Notification
 	app.get('/payment/notify/:order_id', routes.views['payment-notify'].get);
 	app.post('/payment/notify/:order_id', upload.single('file'), routes.views['payment-notify'].post);
+	app.get('/payment/cancel/:order_id', routes.views['payment-cancel'].get);
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

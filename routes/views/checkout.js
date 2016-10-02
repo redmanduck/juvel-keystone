@@ -9,7 +9,7 @@ exports = module.exports = function(req, res) {
     //No user detected
     //redirect user to login page
     if (!req.user) {
-        return res.redirect('/login?next=checkout');
+        return res.redirect('/login?next=cart');
     }
     
     //qtySet is a dict {} of qty, indexed by product id
