@@ -9,7 +9,9 @@ exports = module.exports = {
         var order_id = req.params.order_id;
         var q = keystone.list('Order').model.findOne({
             _id: order_id
-        }).remove(function(err, ok){
+        }).update({
+            isCancelled: true
+        } ,function(err, ok){
             if(err){
                 throw err;
             }

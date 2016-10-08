@@ -9,8 +9,9 @@ exports = module.exports = {
 		if (!req.body.email || !req.body.password){
 			throw "Invalid Username or Password";
 		}
-
+		var cart = req.session.cart;
 		keystone.session.signin({ email: req.body.email, password: req.body.password }, req, res, function (user) {
+			req.session.cart = cart;
 			res.redirect("/" + req.body._next);
 		}, function (err) {
 			throw err;

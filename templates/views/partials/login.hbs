@@ -16,25 +16,15 @@
 				<i class="fa fa-lock"></i> เข้าสู่ระบบด้วย Email</strong>
 		  </button>
 
-		   <a href="#" class="btn btn-primary sukhumvit">
-				<strong class="list-group-item-heading">
-				สมัครครั้งแรก</strong>
-		  </a>
-
 
 		<div class="list-group sukhumvit">
-			
 			<br/>
+			<span class="help-block">
+				หรือคุณสามารถเข้าสู่ระบบด้วยบัญชี Facebook ของคุณ
+			</span>
+			
 
-			<a href="#" class="list-group-item">
-				<strong class="list-group-item-heading">
-				<i class="fa fa-facebook"></i> เข้าสู่ระบบด้วย Facebook</strong>
-			</a>
-			<a href="#" class="list-group-item">
-				<strong class="list-group-item-heading">
-				<i class="fa fa-google"></i> เข้าสู่ระบบด้วย Google</strong>
-			</a>
-
+			<fb:login-button scope="public_profile,email" size="large" onlogin="checkLoginState();"></fb:login-button>
 		</div>
 	</div>
 </div>

@@ -38,11 +38,18 @@
               </div>
               <p>
                 <br/>
+
+                {{#if (eq 0 inventoryOnHand) }}
+                <span class="label label-warning">OUT OF STOCK</span>
+                {{/if}}
+
                 <form method="POST" action="/cart">
                   <input type="hidden" name="productId" value="{{ _id }}"/>
+                  {{#unless (eq 0 inventoryOnHand) }}
                   <button type="submit" class='btn btn-attention'>
                     <i class='fa fa-plus'></i> Add to Cart
                   </button>
+                  {{/unless}}
                   <button class='btn btn-default'>
                     <i class='fa fa-heart'></i> Add to Wishlist
                   </button>

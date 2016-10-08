@@ -8,16 +8,17 @@
         <input type="hidden" name="{{csrfTokenKey}}" value="{{csrfTokenValue}}" />
 
         <div class="row sukhumvit">
-            <div class="col-md-10 col-md-offset-1">
+            <div class="col-md-12">
                 {{#unless cart}}
-                    <div class="container">
-                        <p>คุณยังไม่ได้ใส่สินค้าเข้าตะกร้า</p>
-                        <p>
-                            <a href="/products" class="btn btn-default btn-large">
-                                Explore Catalog
-                            </a>
-                        </p>
-                    </div>
+                    <div class="jumbotron">
+					<h2>Nothing in cart</h2>
+					<p>คุณยังไม่มีสินค้าในตระกร้า</p>
+					<p>
+						<a href="/products" class="btn btn-primary btn-large">
+						    เปิดดู Catalog
+						</a>
+					</p>
+				</div>
                 {{/unless}}
 
                 <table style="width:100%">
@@ -31,13 +32,13 @@
                                     <a href="#">{{ title }}</a>
                                 </td>
                                 <td>
-                                    <span class="cart-item-price" data-price="{{ basePrice }}">{{ basePrice }}</span> <small>บาท</small></td>
+                                    <span class="cart-item-price" data-price="{{ basePrice }}">{{ basePrice }}</span> <small>บาท / pcs</small></td>
                                 <td>
                                     <input type="text" name="qtySet[{{_id}}]" value="{{ qty }}" class="form-control"
                                         size="1"></input>
                                 </td>
                                 <td>
-                                    <a class="btn btn-link"><i class="fa fa-trash-o"></i> เอาออก</a>
+                                    <a class="btn btn-link"><i class="fa fa-trash-o"></i></a>
                                 </td>
                             </tr>
                         {{/each}}
@@ -59,6 +60,7 @@
 
                     <a href="/products" class="btn btn-default sukhumvit">Continue Shopping</a>
                     <button type="submit" class="btn btn-primary sukhumvit">CHECKOUT
+                        
                         <i class="fa fa-chevron-right"></i></button>
 
                 </div>

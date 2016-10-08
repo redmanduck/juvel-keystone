@@ -19,11 +19,11 @@
                         <input type="radio" name="payment[paymentMethod]" value="bankTransfer" class="payment_mode_radio">
 
                     </label>
-                    <label class="list-group-item" style="font-weight:normal">
+                    <label class="list-group-item disabled" style="font-weight:normal">
 
                         <strong>Credit Card<br/></strong>
-                        <span>บัตรเครดิต VISA หรือ Mastercard</span>
-                        <input type="radio" name="payment[paymentMethod]" value="creditCard" class="payment_mode_radio">
+                        <span>Coming Soon</span>
+                        <input type="radio" disabled name="payment[paymentMethod]" value="creditCard" class="payment_mode_radio">
 
                     </label>
                 </div>
@@ -62,9 +62,11 @@ if (selId.length > 0) {
     $("[type=radio][value=" + selId + "]").prop("checked", true);
     digest();
 }
+$('.btn-primary').attr("disabled", "disabled");
 
 $(".payment_mode_radio").change(function() {
     digest();
+    $('.btn-primary').removeAttr("disabled");
 });
 
 digest();

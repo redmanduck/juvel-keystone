@@ -23,6 +23,8 @@
 @brown-lighter: lighten(@brown-base, 83.5%); // #eee
 @brown-darker: darken(@brown-base, 50%);
 
+
+
 // Site Styles
 // ===========
 
@@ -44,11 +46,6 @@
 	#gradient > .horizontal-three-colors(@end-color: @brown-lighter; @mid-color: lighten(@brown-base, 5%);  @start-color: @brown-lighter;);
 }
 
-li.active{
-	border-bottom-color:black;
-	border-bottom-width:1px;
-	border-bottom-style:solid;
-}
 
 .btn-attention{
 	border-color:#c94b5e;
@@ -79,4 +76,14 @@ li.active{
 
 .product-catalog-carousel-indicator a{
 	border:none !important;
+}
+
+.label-warning{
+	background-color: lighten(#D07C8D, 10%);
+	color: darken(#c94b5e, 15%)
+}
+
+.label-default{
+	background-color: lighten(@brown-base, 10%);
+	color: darken(@brown-base, 25%)
 }

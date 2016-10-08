@@ -17,7 +17,7 @@
 					<p>คุณยังไม่มีรายการสั่งซื้อสินค้าจากเรา</p>
 					<p>
 						<a href="/products" class="btn btn-default btn-large">
-						Explore Catalog
+						เปิดดู Catalog
 						</a>
 					</p>
 				</div>
@@ -62,14 +62,12 @@
 					{{#if this.isCancelled}}
 						<i class="fa fa-times"></i> ยกเลิก (Cancelled)
 					{{/if}}
-
-
 				  </div>
 				  <div class="col-md-5 pull-right align-right">
 					  	{{#unless this.isCancelled}}
 						  {{#unless this.isMarkedPaid}}
-				  				<button class="btn btn-sm btn-primary">
-					    		<i class="fa fa-circle"></i> ยกเลิกการสั่งซื้อ</button>
+				  				<a class="btn btn-sm btn-primary" href="/payment/cancel/{{this._id}}">
+					    		<i class="fa fa-circle"></i> ยกเลิกการสั่งซื้อ</a>
 								{{/unless}}
 								{{#if this.isShipped}}
 								<button class="btn btn-sm btn-default">
@@ -85,19 +83,26 @@
 				  {{#each items}}
 				  <div class="panel-body">
 				    <div class="row">
-					    <div class="col-md-1">
+					    <div class="col-md-2">
 					   		<img src="{{product.mainImage.secure_url}}"
 							    style="width: 60px"/>
 					    </div>
 					    <div class="col-md-3">
 					    	<h4><a href="#">{{product.title}}</a></h4>
-							{{ effectivePrice }} บาท x{{quantity}} = {{ mult quantity effectivePrice}} บาท
+							{{ effectivePrice }} บาท <small>x{{quantity}} บาท</small>
 					    </div>
 						<div class="col-md-2">
-							<strong>ชำระโดย</strong><p>{{../paymentMethod}}</p>
+							<strong>ชำระโดย</strong><p>
+									{{#if (eq ../paymentMethod "creditCard") }}
+										บัตรเครดิต
+									{{/if}}
+									{{#if (eq ../paymentMethod "bankTransfer") }}
+										โอนเงิน
+									{{/if}}
+							</p>
 					    </div>
 						<div class="col-md-2">
-							<strong>จัดส่งโดย</strong><p>{{../shippingMethod.title}}</p>
+							<strong>วิธีจัดส่ง</strong><p>{{../shippingMethod.title}}</p>
 					    </div>
 					    <div class="col-md-3 pull-right align-right">
 							{{#unless ../isCancelled}}

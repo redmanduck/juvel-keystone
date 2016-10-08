@@ -52,16 +52,18 @@ exports = module.exports = function (app) {
 	//User management
 	app.get('/login', keystone.security.csrf.middleware.init, routes.views.login.get);
 	app.post('/login', keystone.security.csrf.middleware.validate, routes.views.login.post);
-	app.get('/me', routes.views['account-my']);
-	app.get('/me/orders', routes.views['account-my-orders']);
-	app.get('/me/information', routes.views['account-my-information'].get);
-	app.post('/me/information', routes.views['account-my-information'].post)
+	app.get('/me', middleware.requireUser, routes.views['account-my']);
+	app.get('/me/orders', middleware.requireUser, routes.views['account-my-orders']);
+	app.get('/me/information', middleware.requireUser, routes.views['account-my-information'].get);
+	app.post('/me/information', middleware.requireUser, routes.views['account-my-information'].post)
 	//Product
 	app.get('/products', routes.views.products);
 	//Payment Notification
 	app.get('/payment/notify/:order_id', routes.views['payment-notify'].get);
 	app.post('/payment/notify/:order_id', upload.single('file'), routes.views['payment-notify'].post);
 	app.get('/payment/cancel/:order_id', routes.views['payment-cancel'].get);
+
+	app.get('/admin/orders', middleware.requireUser, routes.views['admin-orders'].get);
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

@@ -48,7 +48,11 @@ module.exports = function() {
     //
     // Options is the formatting and context check this.publishedDate
     // If it exists then it is formated, otherwise current timestamp returned
-
+    
+    _helpers.eq = function(context, options){
+        return context === options;
+    };
+        
     _helpers.date = function(context, options) {
         if (!options && context.hasOwnProperty('hash')) {
             options = context;

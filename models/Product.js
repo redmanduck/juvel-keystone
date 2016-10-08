@@ -20,7 +20,9 @@ Product.add({
 	dataTab1: {type: Types.Html, wysiwyg: true, height: 250 },
 	dataTab2: {type: Types.Html, wysiwyg: true, height: 250 },
 	basePrice: {type: Types.Money, currency: 'th' },
-	collections: { type: Types.Relationship, ref: 'ProductCollection', many: true }
+	collections: { type: Types.Relationship, ref: 'ProductCollection', many: true },
+	inventoryOnHand: { type: Types.Number, default: 0 },
+	inventoryReserved: { type: Types.Number, default:0 , hidden: true}
 });
 
 Product.defaultColumns = 'title, basePrice, state|20%, collections|20%';

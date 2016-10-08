@@ -1,7 +1,7 @@
 <ul class="nav nav-pills nav-stacked">
 	{{# each accountNavLinks}}
-	<li role="presentation" {{#ifeq ../section key}}class="active"{{else}}{{/ifeq}}><a href="{{href}}">
-	{{ label }}</a>
-</li>
-{{/each}}
+	<li role="presentation" {{#ifeq ../section key}}class="active"{{else}}{{/ifeq}}>
+		<a href="{{href}}">{{#ifeq admin true}}<i class="fa fa-object-ungroup"></i> {{/ifeq}}{{ label }}</a> 
+	</li>
+	{{/each}}
 </ul>

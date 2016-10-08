@@ -49,6 +49,7 @@
 
 </form>
 <script>
+    
 function digest() {
     $('.list-group-item').removeClass('active');
     $('.list-group-item:has(input:checked)').addClass('active');
@@ -68,13 +69,20 @@ function digest() {
 }
 
 $(document).ready(function() {
+
+    
+    $('.btn-primary').attr("disabled", "disabled");
+
     var selId = '{{ cart_order.shipping._id }}';
     if (selId.length > 0) {
         $("[type=radio][value=" + selId + "]").prop("checked", true);
         digest();
     }
+
     $(".shipping_mode_radio").change(function() {
         digest();
+        $('.btn-primary').removeAttr("disabled");
     });
+    
 });
 </script>

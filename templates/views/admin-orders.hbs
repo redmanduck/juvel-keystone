@@ -1,0 +1,64 @@
+<div class="container sukhumvit">
+		<div class="page-header row juvel-header">
+		<div class="container sukhumvit">
+			<h2>Order Management</h2>
+			<a href="/me"><i class="fa fa-arrow-left"></i> Back</a>
+		</div>
+</div>
+
+	<div class="container sukhumvit">
+		<div class="row">
+			<div class="col-md-12">
+				<ul class="nav nav-pills">
+				<li role="presentation" class="active"><a href="#">All</a></li>
+				<li role="presentation"><a href="#">Pending Verification</a></li>
+				<li role="presentation"><a href="#">Pending Shipment </a></li>
+				<li role="presentation"><a href="#">Shipped </a></li>
+				</ul>
+				<p>
+					{{#each orders}}
+					<table class="table">
+						<tr class="active">
+							<td style="width: 20px"></td>
+							<td style="width: 150px">Date</td>
+							<td style="width: 250px">Product Name</td>
+							<td style="width: 150px">Paid By</td>
+							<td style="width: 150px">Ship By</td>
+							<td style="width: 150px">QTY</td>
+							<td style="width: 150px">Price</td>
+							<td>PAID</td>
+							<td>VERF</td>
+							<td>SHPD</td>
+						</tr>
+						{{#each items}}
+						<tr class="{{#if ../isCancelled}}danger{{/if}}">
+							<td>{{#unless ../isCancelled}}<a href="#"><i class="fa fa-ellipsis-v"></i></a>{{/unless}}</td>
+							<td>{{date createdAt format='DD/MM/YY HH:mm'}}</td>
+							<td>{{product.title}}
+								{{#if ../isCancelled}}<span class="label label-danger">CANCL</span>{{/if}}
+							</td>
+							<td>{{../paymentMethod}}</td>
+							<td>{{../shippingMethod.title}}</td>
+							<td>{{quantity}}</td>
+							<td>{{effectivePrice}}</td>
+
+							<td>
+								{{#if ../isMarkedPaid}}<i class="fa fa-check-circle"></i>{{/if}}
+								{{#unless ../isMarkedPaid}}<i class="fa fa-minus"></i>{{/unless}}	
+							</td>
+							<td>{{#if ../isVerifiedPaid}}<i class="fa fa-check-circle"></i>{{/if}}
+								{{#unless ../isVerifiedPaid}}<i class="fa fa-minus"></i>{{/unless}}
+							</td>
+							<td>{{#if ../isShipped}}<i class="fa fa-check-circle"></i>{{/if}}
+								{{#unless ../isShipped}}<i class="fa fa-minus"></i>{{/unless}}
+							</td>
+						</tr>
+						{{/each}}
+						
+					</table>
+					{{/each}}
+				</p>
+			</div>
+
+		</div>
+</div>

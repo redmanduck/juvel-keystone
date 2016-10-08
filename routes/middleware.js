@@ -28,11 +28,33 @@ exports.initLocals = function(req, res, next) {
     res.locals.accountNavLinks = [
         { label: 'คำสั่งซื้อของฉัน', key: 'orders', href: '/me/orders' },
         { label: 'ข้อมูลของฉัน', key: 'information', href: '/me/information' },
-        { label: 'Wishlist', key: 'wishlist', href: '/me/wishlist' },
-        { label: 'รีวิวที่ฉันเขียน', key: 'reviews', href: '/me/reviews' }
+        { label: 'Wishlist', key: 'wishlist', href: '/me/wishlist' }
     ];
 
     res.locals.user = req.user;
+    
+    if(req.user && req.user.isAdmin){
+
+        res.locals.accountNavLinks.push({
+            label: 'Order Management',
+            admin: true,
+            key: 'admin_orders', href: '/admin/orders'
+        });
+
+        res.locals.accountNavLinks.push({
+            label: 'Keystone CMS',
+            admin: true,
+            key: 'admin_keystone', href: '/keystone'
+        });
+
+        
+    }
+
+    if(req.session && req.session.cart && req.session.cart.length > 0){
+        res.locals.cart_count = req.session.cart.length;
+    }
+    
+    
     next();
 };
 
