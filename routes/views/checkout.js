@@ -6,11 +6,7 @@ exports = module.exports = function(req, res) {
     var view = new keystone.View(req, res);
     var locals = res.locals;
 
-    //No user detected
-    //redirect user to login page
-    if (!req.user) {
-        return res.redirect('/login?next=cart');
-    }
+    
     
     //qtySet is a dict {} of qty, indexed by product id
     var qtySet = req.body.qtySet;
@@ -22,6 +18,12 @@ exports = module.exports = function(req, res) {
 
         t.qty = qty;
     });
+
+    //No user detected
+    //redirect user to login page
+    if (!req.user) {
+        return res.redirect('/login?next=cart');
+    }
 
     //construct cart 
     req.session.cart_order = {

@@ -52,10 +52,13 @@ exports = module.exports = function (app) {
 	//User management
 	app.get('/login', keystone.security.csrf.middleware.init, routes.views.login.get);
 	app.post('/login', keystone.security.csrf.middleware.validate, routes.views.login.post);
+	app.get('/logout', routes.views.logout.get)
 	app.get('/me', middleware.requireUser, routes.views['account-my']);
 	app.get('/me/orders', middleware.requireUser, routes.views['account-my-orders']);
 	app.get('/me/information', middleware.requireUser, routes.views['account-my-information'].get);
 	app.post('/me/information', middleware.requireUser, routes.views['account-my-information'].post)
+
+	app.get('/signup', routes.views['signup'].get);
 	//Product
 	app.get('/products', routes.views.products);
 	//Payment Notification

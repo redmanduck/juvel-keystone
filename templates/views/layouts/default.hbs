@@ -27,6 +27,15 @@
 			
 			<!-- facebook trash -->
 			<script>
+			//Load SDK
+			(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7&appId=185716724768";
+			fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+
 			
 			window.fbAsyncInit = function() {
 				FB.init({
@@ -42,14 +51,7 @@
 				});
 			}
 
-			//Load SDK
-			(function(d, s, id) {
-			var js, fjs = d.getElementsByTagName(s)[0];
-			if (d.getElementById(id)) return;
-			js = d.createElement(s); js.id = id;
-			js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7&appId=185716724768";
-			fjs.parentNode.insertBefore(js, fjs);
-			}(document, 'script', 'facebook-jssdk'));
+			
 			
 			</script>
 
@@ -89,8 +91,8 @@
 			</div>
 			<div class="container">
 				<div id="footer">
-					<p><small>&copy; Teeb Gradence Trading Co., Ltd. All Rights Reserved.</small>					
-					<p><small>Made with <i class="fa fa-heart"></i> by <strong>19171888G</strong>.</small></p>
+					<p><small>&copy; KTK Something Co., Ltd. All Rights Reserved.</small>					
+					<p><small>Web service maintained by <strong>AlphaStoka Lab</strong>.</small></p>
 				</div>
 			</div>
 		{{!--
