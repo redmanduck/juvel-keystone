@@ -67,6 +67,7 @@ exports = module.exports = function (app) {
 	app.get('/payment/cancel/:order_id', routes.views['payment-cancel'].get);
 
 	app.get('/admin/orders', middleware.requireUser, routes.views['admin-orders'].get);
+	app.post('/admin/orders/:order_id/verify', middleware.requireUser, routes.views['admin-orders'].post_verify);
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

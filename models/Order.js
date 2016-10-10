@@ -23,7 +23,7 @@ Order.add({
     isShipped: {type:Types.Boolean, defaults: false},
     trackingNumber: {type: String },
     isCancelled: { type: Types.Boolean, defaults: false},
-    tfAttachments: { type: Types.CloudinaryImage  },
+    transferEvidence: { type: String  },
     shippingMethod: { type: Types.Relationship, ref: 'ShippingMethod'},
     paymentMethod: { type: Types.Select, options: 'bankTransfer, creditCard', default: 'bankTransfer' },
     items: { type: Types.Relationship, ref: 'OrderItem', many: true },

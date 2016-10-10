@@ -56,6 +56,21 @@
 						{{/each}}
 						
 					</table>
+					{{#if transferEvidence}}
+					{{#unless isVerifiedPaid}}
+					<div class="panel">
+						<div class="panel-body">
+							<img class="img-thumbnail" style="height: 350px" src="/slips/{{transferEvidence}}"/>
+						</div>
+						<div class="panel-body">
+							<form action="/admin/orders/{{_id}}/verify" method="post">
+								<input type="hidden" value="{{_id}}" name="id"/>
+								<button class="btn btn-success"><i class="fa fa-check-circle"></i> Approve (Verify Payment)</button>
+							</form>
+						</div>
+					</div>
+					{{/unless}}
+					{{/if}}
 					{{/each}}
 				</p>
 			</div>

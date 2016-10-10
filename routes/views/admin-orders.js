@@ -38,5 +38,20 @@ exports = module.exports = {
         });
 
 
+    },
+    post_verify: function(req, res, next){
+        var q = keystone.list('Order').model.update({
+            _id: req.body.id
+        }, {
+            isVerifiedPaid: true
+        }, function(err, ok){
+            if(err){
+                throw err;
+            }
+
+            res.redirect('/admin/orders');
+
+            
+        });
     }
 }

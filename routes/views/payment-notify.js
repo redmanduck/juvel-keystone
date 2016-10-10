@@ -1,4 +1,7 @@
 var keystone = require('keystone');
+var fs = require('fs');
+var path = require('path');
+var appDir = path.dirname(require.main.filename);
 
 exports = module.exports = {
     post: function (req, res) {
@@ -12,15 +15,10 @@ exports = module.exports = {
             _id: orderId
         });
 
+        fs.renameSync(file.path, appDir + '/public/slips/' + file.name);
         q.exec(function (err, result) {
             result.isMarkedPaid = true;
-            result.tfAttachments = {
-                filename: file.name,
-                originalname: 'file',
-                path: '/public/slips/',
-                size: file.size,
-                filetype: file.mimetype   
-            };
+            result.transferEvidence = file.name;
             result.save(function (done) {
                 res.redirect('/me/orders');
             });
@@ -35,6 +33,9 @@ exports = module.exports = {
         var q = keystone.list('Order').model.findOne({
             _id: order_id
         }).populate('items');
+        
+        var bankAccounts = keystone.list('BankAccount').model.find({});
+        view.query('bankAccounts', keystone.list('BankAccount').model.find());
 
         q.exec(function (err, result) {
             keystone.list('Product').model.populate(result, 'items.product', function (err, p) {

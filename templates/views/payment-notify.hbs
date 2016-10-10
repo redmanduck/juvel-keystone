@@ -44,50 +44,19 @@
 
 <p class="help-block">1. กรุณาโอนเงินไปยังหนึ่งในบัญชีธนาคารต่อไปนี้</p>
 <div class="row">  
+    {{#each bankAccounts}}
     <div class="col-md-3">
         <div class="media">
             <div class="media-left">
-                 <img src="https://thanatiptrading.files.wordpress.com/2010/10/logo_scb.gif?w=50&h=50">
+                 <img class="img-circle" style="width: 50px" src="{{bankIcon.url}}">
             </div>
             <div class="media-body">
-                <strong class="media-heading">ธนาคารไทยพานิชย์</strong>
-                <p>401-1203-120301-1230</p>
+                <strong class="media-heading">{{bankName}}</strong>
+                <p>{{accountNumber}}</p>
             </div>
        </div>
     </div>
-	<div class="col-md-3">
-        <div class="media">
-            <div class="media-left">
-                 <img src="https://thanatiptrading.files.wordpress.com/2010/10/logo_scb.gif?w=50&h=50">
-            </div>
-            <div class="media-body">
-                <strong class="media-heading">ธนาคารไทยพานิชย์</strong>
-                <p>401-1203-120301-1230</p>
-            </div>
-       </div>
-    </div>
-	<div class="col-md-3">
-        <div class="media">
-            <div class="media-left">
-                 <img src="https://thanatiptrading.files.wordpress.com/2010/10/logo_scb.gif?w=50&h=50">
-            </div>
-            <div class="media-body">
-                <strong class="media-heading">ธนาคารไทยพานิชย์</strong>
-                <p>401-1203-120301-1230</p>
-            </div>
-       </div>
-    </div>
-	<div class="col-md-3">
-        <div class="media">
-            <div class="media-left">
-                 <img src="https://thanatiptrading.files.wordpress.com/2010/10/logo_scb.gif?w=50&h=50">
-            </div>
-            <div class="media-body">
-                <strong class="media-heading">ธนาคารไทยพานิชย์</strong>
-                <p>401-1203-120301-1230</p>
-            </div>
-       </div>
-    </div>
+    {{/each}}
 </div>
 <hr/>
 <div class="row">
